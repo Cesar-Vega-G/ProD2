@@ -1,40 +1,56 @@
-# Archivos de Visual Studio
-.vs/
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
+# Archivos y carpetas de sistema
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
 
-# Binarios y obj
-bin/
-obj/
-
-# Archivos de dependencias
-packages/
-*.nupkg
-*.snupkg
-
-# Archivos de compilación
-*.dll
-*.exe
-*.pdb
-*.cache
-*.log
-
-# Publicaciones
-publish/
-TestResults/
-*.TestResults
-
-# Configuraciones de usuario
-*.userprefs
-
-# Archivos de Rider/JetBrains
+# Visual Studio / Rider
+.vscode/
 .idea/
-*.sln.iml
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+
+# Archivos de configuración de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos generados por Unity
+*.unitypackage
+*.pidb.meta
+*.pdb
+*.mdb
+
+# Carpetas de Unity
+MemoryCaptures/
+AssetStoreTools*
+
+# Archivos de compilación de Android/iOS
+*.apk
+*.aab
+*.ipa
+*.apk.meta
+*.aab.meta
+*.ipa.meta
+
+# Archivos de Cache
+sysinfo.txt
 
 # Otros
-*.dbmdl
-*.bak
-*.backup
+*.log
+
+# Opcional: si tienes configuraciones personales específicas que no quieres subir
 *.swp
+*.bak
+*.orig
+*.old
+*.backup
+
