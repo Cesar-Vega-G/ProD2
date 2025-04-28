@@ -40,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      john_hagging_aimupup_firing_0: -2759225249401495056
+      john_hagging_aimupup_firing_1: 7988330725191608041
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
