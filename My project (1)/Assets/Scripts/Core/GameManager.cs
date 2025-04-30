@@ -32,6 +32,11 @@ public class GameManager : MonoBehaviour
         InitializeGame();
     }
 
+    public int GetPlayersCount()
+    {
+        return playersCount;
+    }
+
     private void InitializeGame()
     {
         remainingTime = gameDuration;

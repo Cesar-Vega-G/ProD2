@@ -3,28 +3,22 @@ using TMPro;
 
 public class Token : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI valueText; // Para mostrar el número
+    [SerializeField] private TextMeshProUGUI valueText;
     private int value;
 
-    // Método llamado por TokenSpawner al crear el token
     public void Initialize(int tokenValue)
     {
         value = tokenValue;
-        if (valueText != null)
-            valueText.text = value.ToString(); // Muestra el valor
+        if (valueText != null) valueText.text = value.ToString();
     }
 
-    // Cuando un jugador toca el token
-    private void OnTriggerEnter2D(Collider2D other)
+    // Método modificado
+    public void Collect(int collectorId)
     {
-        if (other.CompareTag("Player"))
+        if (TreeManager.Instance != null)
         {
-            PlayerController player = other.GetComponent<PlayerController>();
-            if (player != null)
-            {
-                player.CollectToken(value); // Notifica al jugador
-                Destroy(gameObject); // Elimina el token
-            }
+            TreeManager.Instance.InsertValue(collectorId, value);
+            Destroy(gameObject);
         }
     }
 }

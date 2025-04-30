@@ -2,6 +2,8 @@
 
 public class TreeManager : MonoBehaviour
 {
+    public static TreeManager Instance { get; private set; }
+
     [System.Serializable]
     public class PlayerTree
     {
@@ -13,6 +15,18 @@ public class TreeManager : MonoBehaviour
 
     [SerializeField] private TreeType initialTreeType = TreeType.BST;
     private PlayerTree[] playerTrees;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {

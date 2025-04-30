@@ -218,6 +218,11 @@ public class BTree : ITree
         };
     }
 
+    public bool IsPerfect()
+    {
+        return IsPerfect(root);
+    }
+
     private bool IsPerfect(BTreeNode node)
     {
         if (node == null)
