@@ -3,32 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|c:\\users\\sarimoca\\documents\\github\\prod2\\my project (1)\\assets\\scrips\\trees\\btree\\btree.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|solutionrelative:assets\\scrips\\trees\\btree\\btree.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|c:\\users\\sarimoca\\documents\\github\\prod2\\my project (1)\\assets\\scripts\\core\\newmonobehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\newmonobehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|c:\\users\\sarimoca\\documents\\github\\prod2\\my project (1)\\assets\\scrips\\trees\\btree\\btreenode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|solutionrelative:assets\\scrips\\trees\\btree\\btreenode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|c:\\users\\sarimoca\\documents\\github\\prod2\\my project (1)\\assets\\scripts\\core\\challengesystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\challengesystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\assets\\scrips\\trees\\avl\\avl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|solutionrelative:assets\\scrips\\trees\\avl\\avl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|c:\\users\\sarimoca\\documents\\github\\prod2\\my project (1)\\assets\\scripts\\core\\tokenmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\tokenmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\assets\\scrips\\trees\\avl\\avlnode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|solutionrelative:assets\\scrips\\trees\\avl\\avlnode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|c:\\users\\sarimoca\\documents\\github\\prod2\\my project (1)\\assets\\scripts\\core\\treemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\treemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\assets\\scrips\\trees\\bst\\bst.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|solutionrelative:assets\\scrips\\trees\\bst\\bst.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\assets\\scrips\\trees\\bst\\bstnode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|solutionrelative:assets\\scrips\\trees\\bst\\bstnode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\assets\\scrips\\trees\\interfaces\\itree.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|solutionrelative:assets\\scrips\\trees\\interfaces\\itree.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\assets\\scripts\\core\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,8 +30,47 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "NewMonoBehaviour.cs",
+              "DocumentMoniker": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Core\\NewMonoBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\NewMonoBehaviour.cs",
+              "ToolTip": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Core\\NewMonoBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\NewMonoBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T18:11:24.767Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ChallengeSystem.cs",
+              "DocumentMoniker": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Core\\ChallengeSystem.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\ChallengeSystem.cs",
+              "ToolTip": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Core\\ChallengeSystem.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\ChallengeSystem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T18:10:34.59Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TokenManager.cs",
+              "DocumentMoniker": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Core\\TokenManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\TokenManager.cs",
+              "ToolTip": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Core\\TokenManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\TokenManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T18:09:00.193Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -50,89 +81,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "BTree.cs",
-              "DocumentMoniker": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scrips\\Trees\\BTree\\BTree.cs",
-              "RelativeDocumentMoniker": "Assets\\Scrips\\Trees\\BTree\\BTree.cs",
-              "ToolTip": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scrips\\Trees\\BTree\\BTree.cs",
-              "RelativeToolTip": "Assets\\Scrips\\Trees\\BTree\\BTree.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAA0wO8AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T17:38:54.419Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "BTreeNode.cs",
-              "DocumentMoniker": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scrips\\Trees\\BTree\\BTreeNode.cs",
-              "RelativeDocumentMoniker": "Assets\\Scrips\\Trees\\BTree\\BTreeNode.cs",
-              "ToolTip": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scrips\\Trees\\BTree\\BTreeNode.cs",
-              "RelativeToolTip": "Assets\\Scrips\\Trees\\BTree\\BTreeNode.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T17:38:01.501Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AVL.cs",
-              "DocumentMoniker": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scrips\\Trees\\AVL\\AVL.cs",
-              "RelativeDocumentMoniker": "Assets\\Scrips\\Trees\\AVL\\AVL.cs",
-              "ToolTip": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scrips\\Trees\\AVL\\AVL.cs",
-              "RelativeToolTip": "Assets\\Scrips\\Trees\\AVL\\AVL.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T17:33:24.295Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "AVLNode.cs",
-              "DocumentMoniker": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scrips\\Trees\\AVL\\AVLNode.cs",
-              "RelativeDocumentMoniker": "Assets\\Scrips\\Trees\\AVL\\AVLNode.cs",
-              "ToolTip": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scrips\\Trees\\AVL\\AVLNode.cs",
-              "RelativeToolTip": "Assets\\Scrips\\Trees\\AVL\\AVLNode.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAwAAAABAAAAAAAAAA==",
+              "Title": "TreeManager.cs",
+              "DocumentMoniker": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Core\\TreeManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\TreeManager.cs",
+              "ToolTip": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Core\\TreeManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\TreeManager.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAwwBcAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T17:32:01.481Z"
+              "WhenOpened": "2025-04-30T18:07:13.836Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "BST.cs",
-              "DocumentMoniker": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scrips\\Trees\\BST\\BST.cs",
-              "RelativeDocumentMoniker": "Assets\\Scrips\\Trees\\BST\\BST.cs",
-              "ToolTip": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scrips\\Trees\\BST\\BST.cs",
-              "RelativeToolTip": "Assets\\Scrips\\Trees\\BST\\BST.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Core\\GameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\GameManager.cs",
+              "ToolTip": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Core\\GameManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\GameManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T17:30:45.487Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "BSTNode.cs",
-              "DocumentMoniker": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scrips\\Trees\\BST\\BSTNode.cs",
-              "RelativeDocumentMoniker": "Assets\\Scrips\\Trees\\BST\\BSTNode.cs",
-              "ToolTip": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scrips\\Trees\\BST\\BSTNode.cs",
-              "RelativeToolTip": "Assets\\Scrips\\Trees\\BST\\BSTNode.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T17:30:23.648Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ITree.cs",
-              "DocumentMoniker": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scrips\\Trees\\Interfaces\\ITree.cs",
-              "RelativeDocumentMoniker": "Assets\\Scrips\\Trees\\Interfaces\\ITree.cs",
-              "ToolTip": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scrips\\Trees\\Interfaces\\ITree.cs",
-              "RelativeToolTip": "Assets\\Scrips\\Trees\\Interfaces\\ITree.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T17:19:13.248Z"
+              "WhenOpened": "2025-04-30T18:04:00.973Z"
             }
           ]
         }
