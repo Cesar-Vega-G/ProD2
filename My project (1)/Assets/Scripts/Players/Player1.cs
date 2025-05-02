@@ -3,9 +3,9 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
-public class PlayerController : MonoBehaviour
+public class PlayerController3 : MonoBehaviour
 {
-    // Configuraci贸n de movimiento
+    // Configuraci髇 de movimiento
     [Header("Movement Settings")]
     [SerializeField] private float velocidadMovimiento = 5f;
     [SerializeField] private float fuerzaSalto = 5f;
@@ -14,16 +14,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float distanciaRaycastLateral = 0.2f;
     [SerializeField] private Vector2 offsetRaycastLateral = new Vector2(0f, 0f);
 
-    // Identificaci贸n del jugador
+    // Identificaci髇 del jugador
     [Header("Player Settings")]
     [SerializeField] private int playerId = 0; // 0 para P1, 1 para P2
-    public int PlayerId => playerId;
-
-
-
-    [SerializeField] private float fuerzaEmpuje = 50f;
-    [SerializeField] private float distanciaGolpe = 51f;
-    [SerializeField] private LayerMask capaJugador;
 
     // Componentes
     private Rigidbody2D cuerpoJugador;
@@ -66,16 +59,46 @@ public class PlayerController : MonoBehaviour
                 Jump();
             }
 
-            // Golpe (manteniendo tu l贸gica)
+            // Golpe (manteniendo tu l骻ica)
             if (Keyboard.current.eKey.wasPressedThisFrame)
             {
-            
                 animator.SetTrigger("Golpear");
             }
+
+            if (Keyboard.current.eKey.wasPressedThisFrame)
+            {
+                animator.SetTrigger("Golpear");
+                EmpujarEnemigo();
+            }
+
         }
     }
 
- 
+    private void EmpujarEnemigo()
+    {
+        // Direcci髇 hacia donde mira el jugador
+        Vector2 direccion = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
+
+        // Punto de origen del raycast (ligeramente delante del jugador)
+        Vector2 origen = (Vector2)transform.position + direccion * 0.6f;
+
+        // Raycast para detectar a otro jugador en la capa "Player"
+        RaycastHit2D hit = Physics2D.Raycast(origen, direccion, 0.7f, LayerMask.GetMask("Player"));
+
+        // Dibujar el rayo para debug
+        Debug.DrawRay(origen, direccion * 0.7f, Color.yellow, 0.3f);
+
+        // Verificar si golpea a otro jugador y que no sea uno mismo
+        if (hit.collider != null && hit.collider.gameObject != this.gameObject)
+        {
+            Rigidbody2D rbOtro = hit.collider.GetComponent<Rigidbody2D>();
+            if (rbOtro != null)
+            {
+                float fuerzaEmpuje = 5f;
+                rbOtro.AddForce(direccion * fuerzaEmpuje, ForceMode2D.Impulse);
+            }
+        }
+    }
 
 
     private void HandleAnimation()
@@ -106,32 +129,8 @@ public class PlayerController : MonoBehaviour
         Vector2 origenIzquierda = (Vector2)transform.position + offsetRaycastLateral;
         Vector2 origenDerecha = (Vector2)transform.position + offsetRaycastLateral;
 
-        RaycastHit2D hitIzquierda = Physics2D.Raycast(origenIzquierda, Vector2.left, distanciaRaycastLateral);
-        RaycastHit2D hitDerecha = Physics2D.Raycast(origenDerecha, Vector2.right, distanciaRaycastLateral);
-
-        // Detectar colisi贸n con objetos que no son jugadores
-        hayParedIzquierda = hitIzquierda.collider != null && !hitIzquierda.collider.CompareTag("Player 1") && !hitIzquierda.collider.CompareTag("Player 2");
-        hayParedDerecha = hitDerecha.collider != null && !hitDerecha.collider.CompareTag("Player 1") && !hitDerecha.collider.CompareTag("Player 2");
-
-        // Empujar al jugador que est茅 al lado izquierdo
-        if (hitIzquierda.collider != null && (hitIzquierda.collider.CompareTag("Player 1") || hitIzquierda.collider.CompareTag("Player 2")))
-        {
-            Rigidbody2D rb = hitIzquierda.collider.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.AddForce(Vector2.left * -fuerzaEmpuje, ForceMode2D.Impulse);
-            }
-        }
-
-        // Empujar al jugador que est茅 al lado derecho
-        if (hitDerecha.collider != null && (hitDerecha.collider.CompareTag("Player 1") || hitDerecha.collider.CompareTag("Player 2")))
-        {
-            Rigidbody2D rb = hitDerecha.collider.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.AddForce(Vector2.right * fuerzaEmpuje, ForceMode2D.Impulse);
-            }
-        }
+        hayParedIzquierda = Physics2D.Raycast(origenIzquierda, Vector2.left, distanciaRaycastLateral);
+        hayParedDerecha = Physics2D.Raycast(origenDerecha, Vector2.right, distanciaRaycastLateral);
 
         Debug.DrawRay(origenIzquierda, Vector2.left * distanciaRaycastLateral, Color.blue);
         Debug.DrawRay(origenDerecha, Vector2.right * distanciaRaycastLateral, Color.green);
@@ -142,10 +141,16 @@ public class PlayerController : MonoBehaviour
         cuerpoJugador.linearVelocity = new Vector2(direccionMovimiento.x * velocidadMovimiento, cuerpoJugador.linearVelocity.y);
     }
 
-    
+    // M閠odo NUEVO para recolectar tokens
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Token"))
+        {
+            Token token = collision.GetComponent<Token>();
+            if (token != null)
+            {
+                token.Collect(playerId);
+            }
+        }
+    }
 }
-
-
-
-
-

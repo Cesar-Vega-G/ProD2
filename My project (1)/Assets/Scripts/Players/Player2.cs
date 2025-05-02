@@ -3,9 +3,9 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
-public class PlayerController : MonoBehaviour
+public class PlayerController2 : MonoBehaviour
 {
-    // Configuraci√≥n de movimiento
+    // ConfiguraciÛn de movimiento
     [Header("Movement Settings")]
     [SerializeField] private float velocidadMovimiento = 5f;
     [SerializeField] private float fuerzaSalto = 5f;
@@ -14,14 +14,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float distanciaRaycastLateral = 0.2f;
     [SerializeField] private Vector2 offsetRaycastLateral = new Vector2(0f, 0f);
 
-    // Identificaci√≥n del jugador
+    // IdentificaciÛn del jugador
     [Header("Player Settings")]
     [SerializeField] private int playerId = 0; // 0 para P1, 1 para P2
     public int PlayerId => playerId;
 
 
-
-    [SerializeField] private float fuerzaEmpuje = 50f;
+    [SerializeField] private float fuerzaEmpuje = 150f;
     [SerializeField] private float distanciaGolpe = 51f;
     [SerializeField] private LayerMask capaJugador;
 
@@ -55,28 +54,23 @@ public class PlayerController : MonoBehaviour
             DetectarParedes();
 
             // Movimiento (usando Input System)
-            if (Keyboard.current.aKey.isPressed && !hayParedIzquierda)
+            if (Keyboard.current.jKey.isPressed && !hayParedIzquierda)
                 direccionMovimiento.x = -1.3f;
-            if (Keyboard.current.dKey.isPressed && !hayParedDerecha)
+            if (Keyboard.current.lKey.isPressed && !hayParedDerecha)
                 direccionMovimiento.x = 1.3f;
 
             // Salto
-            if (Keyboard.current.wKey.wasPressedThisFrame && Grounded)
+            if (Keyboard.current.iKey.wasPressedThisFrame && Grounded)
             {
                 Jump();
             }
 
-            // Golpe (manteniendo tu l√≥gica)
-            if (Keyboard.current.eKey.wasPressedThisFrame)
+            if (Keyboard.current.oKey.wasPressedThisFrame)
             {
-            
                 animator.SetTrigger("Golpear");
             }
         }
     }
-
- 
-
 
     private void HandleAnimation()
     {
@@ -109,11 +103,11 @@ public class PlayerController : MonoBehaviour
         RaycastHit2D hitIzquierda = Physics2D.Raycast(origenIzquierda, Vector2.left, distanciaRaycastLateral);
         RaycastHit2D hitDerecha = Physics2D.Raycast(origenDerecha, Vector2.right, distanciaRaycastLateral);
 
-        // Detectar colisi√≥n con objetos que no son jugadores
+        // Detectar colisiÛn con objetos que no son jugadores
         hayParedIzquierda = hitIzquierda.collider != null && !hitIzquierda.collider.CompareTag("Player 1") && !hitIzquierda.collider.CompareTag("Player 2");
         hayParedDerecha = hitDerecha.collider != null && !hitDerecha.collider.CompareTag("Player 1") && !hitDerecha.collider.CompareTag("Player 2");
 
-        // Empujar al jugador que est√© al lado izquierdo
+        // Empujar al jugador que estÈ al lado izquierdo
         if (hitIzquierda.collider != null && (hitIzquierda.collider.CompareTag("Player 1") || hitIzquierda.collider.CompareTag("Player 2")))
         {
             Rigidbody2D rb = hitIzquierda.collider.GetComponent<Rigidbody2D>();
@@ -123,7 +117,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // Empujar al jugador que est√© al lado derecho
+        // Empujar al jugador que estÈ al lado derecho
         if (hitDerecha.collider != null && (hitDerecha.collider.CompareTag("Player 1") || hitDerecha.collider.CompareTag("Player 2")))
         {
             Rigidbody2D rb = hitDerecha.collider.GetComponent<Rigidbody2D>();
@@ -144,8 +138,4 @@ public class PlayerController : MonoBehaviour
 
     
 }
-
-
-
-
 
