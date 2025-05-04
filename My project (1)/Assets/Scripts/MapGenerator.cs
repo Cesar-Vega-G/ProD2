@@ -1,19 +1,15 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlatformGenerator : MonoBehaviour
 {
-    public GameObject[] platformPrefabs;  // Los prefabs de las plataformas
-    public int[] platformCounts;          // Array que define cuántas plataformas generar de cada tipo
-    public float minDistanceX = 3f;      // Distancia mínima entre plataformas en X
-    public float maxDistanceX = 10f;     // Distancia máxima entre plataformas en X
-    public float minHeight = 2f;         // Altura mínima de las plataformas
-    public float maxHeight = 6f;         // Altura máxima de las plataformas
-    public float mapWidth = 20f;         // Ancho del mapa (en unidades)
-    public float mapHeight = 10f;        // Altura del mapa (en unidades)
-    public LayerMask platformLayer;      // Layer donde están las plataformas para colisión
+    [Header("Tipos de Plataformas")]
+    public List<PlatformType> platformTypes; // Configura en el Inspector.
 
-    private float lastPlatformX = 0f;    // La posición X de la última plataforma generada
-    private float lastPlatformY = 0f;    // La posición Y de la última plataforma generada
+    [Header("Configuración de Spawn")]
+    public Vector2 spawnAreaMin = new Vector2(-10, -5);
+    public Vector2 spawnAreaMax = new Vector2(10, 5);
+    public float minDistanceBetweenPlatforms = 3f; // Distancia mínima entre plataformas.
 
     void Start()
     {
@@ -22,62 +18,66 @@ public class PlatformGenerator : MonoBehaviour
 
     void GeneratePlatforms()
     {
-        // La primera plataforma siempre se genera en (0, 0)
-        lastPlatformX = 0f;  // Posición X de la primera plataforma
-        lastPlatformY = 0f;  // Posición Y de la primera plataforma
-        InstantiateFirstPlatform();
+        // 1. Generar la plataforma PRINCIPAL en (0, 0)
+        GenerateMainPlatform();
 
-        // Generamos las plataformas adicionales
-        for (int i = 0; i < platformPrefabs.Length; i++)
+        // 2. Generar el resto de plataformas aleatorias
+        foreach (PlatformType type in platformTypes)
         {
-            for (int j = 0; j < platformCounts[i]; j++)
+            for (int i = 0; i < type.quantity; i++)
             {
-                GeneratePlatform(i, j);
+                Vector2 randomPosition = GetValidRandomPosition();
+                GeneratePlatform(type.prefab, randomPosition);
             }
         }
     }
 
-    // Método para instanciar la primera plataforma en (0, 0)
-    void InstantiateFirstPlatform()
+    void GenerateMainPlatform()
     {
-        Vector3 platformPosition = new Vector3(lastPlatformX, lastPlatformY, 0);
-        Instantiate(platformPrefabs[0], platformPosition, Quaternion.identity);
+        // Busca el tipo marcado como "isMainPlatform" y lo genera en (0, 0).
+        foreach (PlatformType type in platformTypes)
+        {
+            if (type.isMainPlatform)
+            {
+                GeneratePlatform(type.prefab, Vector2.zero);
+                break;
+            }
+        }
     }
 
-    // Método para generar plataformas adicionales
-    void GeneratePlatform(int prefabIndex, int platformIndex)
+    void GeneratePlatform(GameObject prefab, Vector2 position)
     {
-        // Generar una posición X aleatoria, asegurándonos de que la distancia mínima se mantenga
-        float randomX = lastPlatformX + Random.Range(minDistanceX, maxDistanceX);
+        Instantiate(prefab, position, Quaternion.identity);
+    }
 
-        // Asegurarse de que la plataforma no salga fuera del límite del mapa
-        randomX = Mathf.Clamp(randomX, -mapWidth / 2f, mapWidth / 2f);
+    Vector2 GetValidRandomPosition()
+    {
+        Vector2 randomPosition;
+        bool positionIsValid;
+        int attempts = 0;
+        int maxAttempts = 100;
 
-        // Generar una posición Y aleatoria dentro del rango de alturas
-        float randomY = lastPlatformY + Random.Range(minHeight, maxHeight);
-
-        // Asegurarse de que la plataforma no salga fuera del límite del mapa en Y
-        randomY = Mathf.Clamp(randomY, -mapHeight / 2f, mapHeight / 2f);
-
-        // Verificar si la nueva plataforma solapa con otra existente
-        Vector2 platformSize = platformPrefabs[prefabIndex].GetComponent<Collider2D>().bounds.size; // Obtener el tamaño del Collider2D de la plataforma
-        Vector2 platformPosition = new Vector2(randomX, randomY);
-
-        // Usamos Physics2D.OverlapBox para verificar si la nueva plataforma colisiona
-        if (!Physics2D.OverlapBox(platformPosition, platformSize, 0f, platformLayer))
+        do
         {
-            // Si no hay colisión, instanciamos la plataforma
-            Instantiate(platformPrefabs[prefabIndex], platformPosition, Quaternion.identity);
+            // Genera una posición aleatoria dentro del área.
+            randomPosition = new Vector2(
+                Random.Range(spawnAreaMin.x, spawnAreaMax.x),
+                Random.Range(spawnAreaMin.y, spawnAreaMax.y)
+            );
 
-            // Actualizar la posición X y Y de la última plataforma generada
-            lastPlatformX = randomX;
-            lastPlatformY = randomY;
-        }
-        else
-        {
-            // Si hay colisión, intentamos generar una nueva plataforma
-            platformIndex--; // Repetir este ciclo sin avanzar, hasta encontrar una posición válida
-        }
+            // Verifica que no esté demasiado cerca de otras plataformas.
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(randomPosition, minDistanceBetweenPlatforms);
+            positionIsValid = colliders.Length == 0;
+
+            attempts++;
+            if (attempts >= maxAttempts)
+            {
+                Debug.LogWarning("No se encontró posición válida después de " + maxAttempts + " intentos.");
+                break;
+            }
+        } while (!positionIsValid);
+
+        return randomPosition;
     }
 }
 

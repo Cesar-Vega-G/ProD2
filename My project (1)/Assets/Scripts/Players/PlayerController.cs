@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
             // Salto
             if (Keyboard.current.wKey.wasPressedThisFrame && Grounded)
             {
+                Debug.LogWarning("W presionado");
                 Jump();
             }
 
@@ -91,13 +92,17 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
+        Debug.LogWarning("Jump");
         cuerpoJugador.AddForce(Vector2.up * fuerzaSalto, ForceMode2D.Impulse);
     }
 
     private void CheckGrounded()
     {
+        
         Vector2 origenRaycast = (Vector2)transform.position + offsetRaycastSuelo;
+        Debug.DrawRay(origenRaycast, Vector2.down * distanciaRaycastSuelo, Color.red);
         Grounded = Physics2D.Raycast(origenRaycast, Vector2.down, distanciaRaycastSuelo);
+        Debug.LogWarning(Grounded);
         Debug.DrawRay(origenRaycast, Vector2.down * distanciaRaycastSuelo, Color.red);
     }
 
