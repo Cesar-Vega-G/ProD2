@@ -20,7 +20,7 @@ public class TokenSpawner : MonoBehaviour
             Random.Range(-spawnArea.x, spawnArea.x),
             spawnArea.y
         );
-
+        Debug.Log($"Spawning token at {spawnPos}");
         GameObject tokenObj = Instantiate(tokenPrefab, spawnPos, Quaternion.identity);
         Token token = tokenObj.GetComponent<Token>();
         token.Initialize(Random.Range(minValue, maxValue + 1));

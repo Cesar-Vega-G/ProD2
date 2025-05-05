@@ -29,9 +29,10 @@ public class PlayerController2 : MonoBehaviour
     private bool Grounded;
     private bool empujadoTemporalmente = false;
     private BoxCollider2D boxCollider; // Collider para detección de bloques
-
+    private Vector3 initialPosition;
     void Awake()
     {
+        initialPosition = transform.position;
         cuerpoJugador = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
@@ -39,6 +40,10 @@ public class PlayerController2 : MonoBehaviour
 
     void Update()
     {
+        if (transform.position.y < -5f)  
+        {
+            Respawn();
+        }
         HandleInput();
         HandleAnimation();
         CheckGrounded();
@@ -66,7 +71,12 @@ public class PlayerController2 : MonoBehaviour
             }
         }
     }
-
+    private void Respawn()
+    {
+        Debug.Log($"Player {playerId} cayó al vacío. ¡Respawneando!");
+        transform.position = initialPosition;
+        cuerpoJugador.linearVelocity = Vector2.zero;  // Opcional: resetea la velocidad para evitar que siga cayendo
+    }
     private void Golpear()
     {
         Vector2 direccionGolpe = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
@@ -168,6 +178,18 @@ public class PlayerController2 : MonoBehaviour
             return true;
 
         return false;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Entró en Trigger con: " + collision.name);
+        if (collision.CompareTag("Token"))
+        {
+            Token token = collision.GetComponent<Token>();
+            if (token != null)
+            {
+                token.Collect(playerId);  // Aquí usa el PlayerId actual
+            }
+        }
     }
 }
 

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 
@@ -20,14 +20,16 @@ public class TilemapPlatformManager : MonoBehaviour
     public int count9x1 = 1;
 
     [Header("Spawn Area")]
-    public Vector2Int spawnAreaMin = new Vector2Int(-20, -5);
-    public Vector2Int spawnAreaMax = new Vector2Int(20, 5);
+    public Vector2Int spawnAreaMin = new Vector2Int(-20, 1); // 👈 Comenzamos en Y=1 para la primera capa
+    public Vector2Int spawnAreaMax = new Vector2Int(20, 10);
 
-    [Header("Vertical Spacing")]
-    [SerializeField] private int minVerticalSpacing = 3; // M�nimo espacio entre plataformas en Y
+    [Header("Layer Settings")]
+    [SerializeField] private int platformsPerLayer = 3;  // Cuántas plataformas por capa antes de subir
+    private int currentLayerY; // Nivel Y actual de la capa
+    [SerializeField] private int minHorizontalSpacing = 1;
+    private int platformsInCurrentLayer = 0; // Contador por capa
 
     private HashSet<Vector2Int> occupiedPositions = new HashSet<Vector2Int>();
-    private List<int> usedYLevels = new List<int>(); // Para controlar niveles Y ocupados
 
     void Start()
     {
@@ -36,10 +38,14 @@ public class TilemapPlatformManager : MonoBehaviour
 
     void GeneratePlatforms()
     {
-        // Plataforma principal (opcional)
-        // PlacePlatform(mainTile, platform9x1, Vector2Int.zero);
+        // ✅ Plataforma inicial en (-3, 0)
+        PlacePlatform(mainTile, platform9x1, new Vector2Int(-3, 0));
 
-        // Generar plataformas con spacing vertical
+        // Inicializamos la primera capa en Y = spawnAreaMin.y
+        currentLayerY = spawnAreaMin.y;
+        platformsInCurrentLayer = 0;
+
+        // Generamos las plataformas en capas
         SpawnPlatforms(platform3x1, count3x1);
         SpawnPlatforms(platform6x1, count6x1);
         SpawnPlatforms(platform9x1, count9x1);
@@ -51,6 +57,16 @@ public class TilemapPlatformManager : MonoBehaviour
         {
             Vector2Int origin = GetValidPosition(platformTemplate);
             PlacePlatform(groundTile, platformTemplate, origin);
+
+            // Contamos plataformas en la capa actual
+            platformsInCurrentLayer++;
+
+            // ¿Ya llenamos esta capa?
+            if (platformsInCurrentLayer >= platformsPerLayer)
+            {
+                currentLayerY += 3; // Subimos 3 unidades en Y (a la siguiente capa)
+                platformsInCurrentLayer = 0; // Reiniciamos contador para la nueva capa
+            }
         }
     }
 
@@ -59,65 +75,55 @@ public class TilemapPlatformManager : MonoBehaviour
         int attempts = 0;
         while (attempts < 100)
         {
-            // 1. Elegir un Y que respete el spacing vertical
-            int yPos = GetValidYLevel();
+            // Generamos X aleatorio dentro del rango horizontal
+            int xPos = Random.Range(spawnAreaMin.x, spawnAreaMax.x - GetPlatformWidth(platformTemplate) + 1);
 
-            // 2. Generar X aleatoria
-            int xPos = Random.Range(spawnAreaMin.x, spawnAreaMax.x - GetPlatformWidth(platformTemplate));
+            // Y es fijo: siempre en la capa actual
+            int yPos = currentLayerY;
 
             Vector2Int origin = new Vector2Int(xPos, yPos);
 
             if (IsAreaClear(origin, platformTemplate))
             {
-                usedYLevels.Add(yPos); // Registrar nivel Y usado
                 return origin;
             }
             attempts++;
         }
-        Debug.LogWarning("No se encontr� posici�n v�lida.");
-        return Vector2Int.zero;
+        Debug.LogWarning($"No se encontró posición válida en la capa Y={currentLayerY}, se usará (0,{currentLayerY}).");
+        return new Vector2Int(0, currentLayerY); // fallback seguro
     }
 
-    int GetValidYLevel()
-    {
-        int yPos;
-        bool validY;
-        int attempts = 0;
 
-        do
-        {
-            validY = true;
-            yPos = Random.Range(spawnAreaMin.y, spawnAreaMax.y);
-
-            // Verificar spacing con otros niveles Y
-            foreach (int usedY in usedYLevels)
-            {
-                if (Mathf.Abs(yPos - usedY) < minVerticalSpacing)
-                {
-                    validY = false;
-                    break;
-                }
-            }
-            attempts++;
-        } while (!validY && attempts < 50);
-
-        return validY ? yPos : 0; // Fallback
-    }
 
     bool IsAreaClear(Vector2Int origin, Vector2Int[] platformTemplate)
     {
         foreach (Vector2Int offset in platformTemplate)
         {
             Vector2Int tilePos = origin + offset;
+
+            // ✔️ 1️⃣ Revisamos la propia celda
             if (occupiedPositions.Contains(tilePos) ||
                 tilePos.x < spawnAreaMin.x || tilePos.x > spawnAreaMax.x ||
                 tilePos.y < spawnAreaMin.y || tilePos.y > spawnAreaMax.y)
             {
                 return false;
             }
+
+            // ✔️ 2️⃣ Revisamos celdas adyacentes horizontales, según minHorizontalSpacing
+            for (int i = -minHorizontalSpacing; i <= minHorizontalSpacing; i++)
+            {
+                if (i == 0) continue; // Saltamos la celda actual
+                Vector2Int checkPos = new Vector2Int(tilePos.x + i, tilePos.y);
+                if (occupiedPositions.Contains(checkPos))
+                {
+                    return false;
+                }
+            }
         }
+
         return true;
     }
+
 
     int GetPlatformWidth(Vector2Int[] platformTemplate)
     {

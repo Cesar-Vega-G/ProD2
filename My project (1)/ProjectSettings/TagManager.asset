@@ -7,6 +7,7 @@ TagManager:
   - Player 2
   - Player 1
   - obsta
+  - Token
   layers:
   - Default
   - TransparentFX

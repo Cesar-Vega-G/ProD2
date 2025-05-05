@@ -27,15 +27,21 @@ public class PlayerController : MonoBehaviour
     private Vector2 direccionMovimiento;
     private bool Grounded;
     private bool empujadoTemporalmente = false;
+    private Vector3 initialPosition;
 
     void Awake()
     {
+        initialPosition = transform.position;
         cuerpoJugador = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
     void Update()
     {
+        if (transform.position.y < -5f)  
+        {
+            Respawn();
+        }
         HandleInput();
         HandleAnimation();
         CheckGrounded();
@@ -117,7 +123,12 @@ public class PlayerController : MonoBehaviour
         Grounded = Physics2D.Raycast(origenRaycast, Vector2.down, distanciaRaycastSuelo);
         Debug.DrawRay(origenRaycast, Vector2.down * distanciaRaycastSuelo, Color.red);
     }
-
+    private void Respawn()
+    {
+        Debug.Log($"Player {playerId} cayó al vacío. ¡Respawneando!");
+        transform.position = initialPosition;
+        cuerpoJugador.linearVelocity = Vector2.zero;  // Opcional: resetea la velocidad para evitar que siga cayendo
+    }
     void FixedUpdate()
     {
         if (!empujadoTemporalmente)
@@ -152,6 +163,18 @@ public class PlayerController : MonoBehaviour
             return true;
 
         return false;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Entró en Trigger con: " + collision.name);
+        if (collision.CompareTag("Token"))
+        {
+            Token token = collision.GetComponent<Token>();
+            if (token != null)
+            {
+                token.Collect(playerId);  // Aquí usa el PlayerId actual
+            }
+        }
     }
 }
 
