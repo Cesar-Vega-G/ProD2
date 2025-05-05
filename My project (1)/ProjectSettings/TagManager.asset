@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Player 2
   - Player 1
+  - obsta
   layers:
   - Default
   - TransparentFX

@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(BoxCollider2D))]
 public class PlayerController2 : MonoBehaviour
 {
     // Configuración de movimiento
@@ -27,11 +28,13 @@ public class PlayerController2 : MonoBehaviour
     private Vector2 direccionMovimiento;
     private bool Grounded;
     private bool empujadoTemporalmente = false;
+    private BoxCollider2D boxCollider; // Collider para detección de bloques
 
     void Awake()
     {
         cuerpoJugador = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     void Update()
@@ -39,6 +42,7 @@ public class PlayerController2 : MonoBehaviour
         HandleInput();
         HandleAnimation();
         CheckGrounded();
+        BloquearSiHayObstaculoNoJugador();  // Llamada para bloquear movimiento si hay obstáculo
     }
 
     private void HandleInput()
@@ -55,8 +59,11 @@ public class PlayerController2 : MonoBehaviour
             if (Keyboard.current.iKey.wasPressedThisFrame && Grounded) // Salto
                 Jump();
 
-            if (Keyboard.current.oKey.wasPressedThisFrame) // Golpe
+            if (Keyboard.current.oKey.wasPressedThisFrame)
+            {
+                animator.SetTrigger("Golpear"); // Animación de golpe
                 Golpear();
+            }
         }
     }
 
@@ -69,7 +76,6 @@ public class PlayerController2 : MonoBehaviour
 
         if (hit.collider != null && hit.collider.CompareTag("Player 1"))
         {
-            animator.SetTrigger("Golpear"); // Animación de golpe
             Rigidbody2D rbEnemigo = hit.collider.GetComponent<Rigidbody2D>();
             PlayerController controlador = hit.collider.GetComponent<PlayerController>();
 
@@ -116,12 +122,53 @@ public class PlayerController2 : MonoBehaviour
         Debug.DrawRay(origenRaycast, Vector2.down * distanciaRaycastSuelo, Color.red);
     }
 
+    private void BloquearSiHayObstaculoNoJugador()
+    {
+        if (!empujadoTemporalmente)
+        {
+            if (!PuedeMover(direccionMovimiento.x))  // Verifica si hay un obstáculo
+            {
+                cuerpoJugador.linearVelocity = new Vector2(0f, cuerpoJugador.linearVelocity.y); // Bloquea el movimiento lateral
+            }
+        }
+    }
+
     void FixedUpdate()
     {
         if (!empujadoTemporalmente)
         {
-            cuerpoJugador.linearVelocity = new Vector2(direccionMovimiento.x * velocidadMovimiento, cuerpoJugador.linearVelocity.y); // Movimiento del jugador
+            if (PuedeMover(direccionMovimiento.x))
+            {
+                cuerpoJugador.linearVelocity = new Vector2(direccionMovimiento.x * velocidadMovimiento, cuerpoJugador.linearVelocity.y); // Movimiento del jugador
+            }
+            else
+            {
+                cuerpoJugador.linearVelocity = new Vector2(0f, cuerpoJugador.linearVelocity.y); // Bloquea el movimiento lateral
+            }
         }
     }
+
+
+    private bool PuedeMover(float direccionX)
+    {
+        if (direccionX == 0)
+            return true;
+
+        Vector2 direccion = direccionX > 0 ? Vector2.right : Vector2.left;
+        Vector2 origen = transform.position;
+        float distanciaDeteccion = 0.15f;
+
+        RaycastHit2D hit = Physics2D.Raycast(origen, direccion, distanciaDeteccion);
+
+        if (hit.collider == null)
+            return true;
+
+        // Solo permite avanzar si lo que hay delante es otro jugador
+        if (hit.collider.CompareTag("Player 1") || hit.collider.CompareTag("Player 2"))
+            return true;
+
+        return false;
+    }
 }
+
 

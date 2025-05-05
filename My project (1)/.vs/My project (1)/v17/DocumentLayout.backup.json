@@ -18,12 +18,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -32,10 +28,15 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\Players\\Player1.cs",
               "ToolTip": "C:\\Users\\cesar\\OneDrive\\Documents\\Tercer Semestre\\Datos\\ProD2\\My project (1)\\Assets\\Scripts\\Players\\Player1.cs",
               "RelativeToolTip": "Assets\\Scripts\\Players\\Player1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAAwI4AAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-04T20:36:29.408Z",
+              "IsPinned": true,
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
@@ -45,9 +46,9 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\Players\\Player2.cs",
               "ToolTip": "C:\\Users\\cesar\\OneDrive\\Documents\\Tercer Semestre\\Datos\\ProD2\\My project (1)\\Assets\\Scripts\\Players\\Player2.cs",
               "RelativeToolTip": "Assets\\Scripts\\Players\\Player2.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAI8AAAAAAAAAAAAwwK8AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-04T20:36:40.72Z",
+              "WhenOpened": "2025-05-05T01:17:25.869Z",
               "EditorCaption": ""
             }
           ]
