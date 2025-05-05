@@ -5,23 +5,20 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Animator))]
 public class PlayerController2 : MonoBehaviour
 {
-    // Configuración de movimiento
+    // ConfiguraciÃ³n de movimiento
     [Header("Movement Settings")]
     [SerializeField] private float velocidadMovimiento = 5f;
     [SerializeField] private float fuerzaSalto = 5f;
     [SerializeField] private float distanciaRaycastSuelo = 0.2f;
     [SerializeField] private Vector2 offsetRaycastSuelo = new Vector2(0f, -0.1f);
-    [SerializeField] private float distanciaRaycastLateral = 0.2f;
-    [SerializeField] private Vector2 offsetRaycastLateral = new Vector2(0f, 0f);
 
-    // Identificación del jugador
+    // IdentificaciÃ³n del jugador
     [Header("Player Settings")]
-    [SerializeField] private int playerId = 0; // 0 para P1, 1 para P2
+    [SerializeField] private int playerId = 1;
     public int PlayerId => playerId;
 
-
-    [SerializeField] private float fuerzaEmpuje = 150f;
-    [SerializeField] private float distanciaGolpe = 51f;
+    [SerializeField] private float fuerzaGolpe = 10f;  // Fuerza del golpe
+    [SerializeField] private float distanciaGolpe = 1.5f;
     [SerializeField] private LayerMask capaJugador;
 
     // Componentes
@@ -29,8 +26,7 @@ public class PlayerController2 : MonoBehaviour
     private Animator animator;
     private Vector2 direccionMovimiento;
     private bool Grounded;
-    private bool hayParedIzquierda;
-    private bool hayParedDerecha;
+    private bool empujadoTemporalmente = false;
 
     void Awake()
     {
@@ -51,41 +47,66 @@ public class PlayerController2 : MonoBehaviour
 
         if (Keyboard.current != null)
         {
-            DetectarParedes();
-
-            // Movimiento (usando Input System)
-            if (Keyboard.current.jKey.isPressed && !hayParedIzquierda)
+            if (Keyboard.current.jKey.isPressed) // Movimiento a la izquierda
                 direccionMovimiento.x = -1.3f;
-            if (Keyboard.current.lKey.isPressed && !hayParedDerecha)
+            if (Keyboard.current.lKey.isPressed) // Movimiento a la derecha
                 direccionMovimiento.x = 1.3f;
 
-            // Salto
-            if (Keyboard.current.iKey.wasPressedThisFrame && Grounded)
-            {
+            if (Keyboard.current.iKey.wasPressedThisFrame && Grounded) // Salto
                 Jump();
-            }
 
-            if (Keyboard.current.oKey.wasPressedThisFrame)
-            {
-                animator.SetTrigger("Golpear");
-            }
+            if (Keyboard.current.oKey.wasPressedThisFrame) // Golpe
+                Golpear();
         }
+    }
+
+    private void Golpear()
+    {
+        Vector2 direccionGolpe = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
+        Vector2 origen = transform.position;
+
+        RaycastHit2D hit = Physics2D.Raycast(origen, direccionGolpe, distanciaGolpe, capaJugador);
+
+        if (hit.collider != null && hit.collider.CompareTag("Player 1"))
+        {
+            animator.SetTrigger("Golpear"); // AnimaciÃ³n de golpe
+            Rigidbody2D rbEnemigo = hit.collider.GetComponent<Rigidbody2D>();
+            PlayerController controlador = hit.collider.GetComponent<PlayerController>();
+
+            if (rbEnemigo != null)
+                rbEnemigo.AddForce(direccionGolpe * fuerzaGolpe, ForceMode2D.Impulse);  // Aplica la fuerza de retroceso al golpeado
+
+            if (controlador != null)
+                controlador.DesactivarMovimientoTemporalmente(); // Desactiva movimiento temporalmente para el golpeado
+        }
+
+        Debug.DrawRay(origen, direccionGolpe * distanciaGolpe, Color.yellow, 0.5f);
+    }
+
+    public void DesactivarMovimientoTemporalmente()
+    {
+        empujadoTemporalmente = true;
+        Invoke(nameof(ReactivarMovimiento), 0.2f); // Tiempo de stun
+    }
+
+    private void ReactivarMovimiento()
+    {
+        empujadoTemporalmente = false;
     }
 
     private void HandleAnimation()
     {
-        // Flip sprite
         if (direccionMovimiento.x < 0)
-            transform.localScale = new Vector3(-1.3f, 1.3f, 1.3f);
+            transform.localScale = new Vector3(-1.3f, 1.3f, 1.3f); // Mirada a la izquierda
         else if (direccionMovimiento.x > 0)
-            transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
+            transform.localScale = new Vector3(1.3f, 1.3f, 1.3f); // Mirada a la derecha
 
-        animator.SetBool("Running", Mathf.Abs(cuerpoJugador.linearVelocity.x) > 0.1f);
+        animator.SetBool("Running", Mathf.Abs(cuerpoJugador.linearVelocity.x) > 0.1f); // AnimaciÃ³n de correr
     }
 
     private void Jump()
     {
-        cuerpoJugador.AddForce(Vector2.up * fuerzaSalto, ForceMode2D.Impulse);
+        cuerpoJugador.AddForce(Vector2.up * fuerzaSalto, ForceMode2D.Impulse); // Salto
     }
 
     private void CheckGrounded()
@@ -95,47 +116,12 @@ public class PlayerController2 : MonoBehaviour
         Debug.DrawRay(origenRaycast, Vector2.down * distanciaRaycastSuelo, Color.red);
     }
 
-    private void DetectarParedes()
-    {
-        Vector2 origenIzquierda = (Vector2)transform.position + offsetRaycastLateral;
-        Vector2 origenDerecha = (Vector2)transform.position + offsetRaycastLateral;
-
-        RaycastHit2D hitIzquierda = Physics2D.Raycast(origenIzquierda, Vector2.left, distanciaRaycastLateral);
-        RaycastHit2D hitDerecha = Physics2D.Raycast(origenDerecha, Vector2.right, distanciaRaycastLateral);
-
-        // Detectar colisión con objetos que no son jugadores
-        hayParedIzquierda = hitIzquierda.collider != null && !hitIzquierda.collider.CompareTag("Player 1") && !hitIzquierda.collider.CompareTag("Player 2");
-        hayParedDerecha = hitDerecha.collider != null && !hitDerecha.collider.CompareTag("Player 1") && !hitDerecha.collider.CompareTag("Player 2");
-
-        // Empujar al jugador que esté al lado izquierdo
-        if (hitIzquierda.collider != null && (hitIzquierda.collider.CompareTag("Player 1") || hitIzquierda.collider.CompareTag("Player 2")))
-        {
-            Rigidbody2D rb = hitIzquierda.collider.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.AddForce(Vector2.left * -fuerzaEmpuje, ForceMode2D.Impulse);
-            }
-        }
-
-        // Empujar al jugador que esté al lado derecho
-        if (hitDerecha.collider != null && (hitDerecha.collider.CompareTag("Player 1") || hitDerecha.collider.CompareTag("Player 2")))
-        {
-            Rigidbody2D rb = hitDerecha.collider.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.AddForce(Vector2.right * fuerzaEmpuje, ForceMode2D.Impulse);
-            }
-        }
-
-        Debug.DrawRay(origenIzquierda, Vector2.left * distanciaRaycastLateral, Color.blue);
-        Debug.DrawRay(origenDerecha, Vector2.right * distanciaRaycastLateral, Color.green);
-    }
-
     void FixedUpdate()
     {
-        cuerpoJugador.linearVelocity = new Vector2(direccionMovimiento.x * velocidadMovimiento, cuerpoJugador.linearVelocity.y);
+        if (!empujadoTemporalmente)
+        {
+            cuerpoJugador.linearVelocity = new Vector2(direccionMovimiento.x * velocidadMovimiento, cuerpoJugador.linearVelocity.y); // Movimiento del jugador
+        }
     }
-
-    
 }
 
