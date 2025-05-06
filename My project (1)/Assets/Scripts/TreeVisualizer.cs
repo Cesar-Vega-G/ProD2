@@ -10,10 +10,11 @@ public class TreeVisualizer : MonoBehaviour
 
     private List<GameObject> spawnedNodes = new List<GameObject>();
 
+    
     // Llama este método para redibujar el árbol de un jugador
     public void DrawTree(ITree tree)
     {
-        ClearTree();  // 🔄 Primero limpiamos cualquier árbol previo
+        //ClearTree();  // 🔄 Primero limpiamos cualquier árbol previo
 
         if (tree == null)
         {
@@ -24,10 +25,12 @@ public class TreeVisualizer : MonoBehaviour
         // Detectamos el tipo de árbol (solo binarios por ahora)
         if (tree is AVL avl)
         {
+            Debug.LogWarning("1");
             DrawBinaryTree(GetRoot(avl), transform.position, horizontalSpacing);
         }
         else if (tree is BST bst)
         {
+            Debug.LogWarning("1");
             DrawBinaryTree(GetRoot(bst), transform.position, horizontalSpacing);
         }
         else

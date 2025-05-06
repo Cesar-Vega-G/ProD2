@@ -62,24 +62,23 @@ public class TreeManager : MonoBehaviour
 
     public void InsertValue(int playerId, int value)
     {
+        Debug.Log("Insert");
         if (playerId < 0 || playerId >= playerTrees.Length) return;
 
         var tree = playerTrees[playerId].tree;
+
         tree.Insert(value);
+
         Debug.Log($"Player {playerId + 1} tree: {tree.Traversal()}");
 
-        // ✅ Verificar desafío si el sistema está presente
+        // Verificar desafío si el sistema está presente
         if (challengeSystem != null)
         {
             bool completed = challengeSystem.CheckChallenge(playerId, tree);
             if (completed)
             {
                 Debug.Log($"🎉 Player {playerId + 1} COMPLETED the challenge: {challengeSystem.GetCurrentChallengeDescription()}");
-
-                // OPCIONAL: podrías hacer que se genere un nuevo reto:
                 challengeSystem.GenerateRandomChallenge();
-
-                // O dar puntos extra, etc.
                 if (GameManager.Instance != null)
                 {
                     GameManager.Instance.AddScore(playerId, 50); // Bonus de ejemplo
@@ -88,8 +87,16 @@ public class TreeManager : MonoBehaviour
         }
     }
 
+    public ITree GetPlayerTree(int playerId)
+    {
+        if (playerId < 0 || playerId >= playerTrees.Length)
+        {
+            Debug.LogWarning("Jugador no encontrado");
+            return null;
+        }
+        return playerTrees[playerId].tree;  // Devuelve el árbol del jugador
+    }
 
-    // Para cambiar el tipo de árbol durante el juego
     public void SwitchTreeType(int playerId, TreeType newType)
     {
         if (playerId >= 0 && playerId < playerTrees.Length)
@@ -99,3 +106,7 @@ public class TreeManager : MonoBehaviour
         }
     }
 }
+
+
+
+

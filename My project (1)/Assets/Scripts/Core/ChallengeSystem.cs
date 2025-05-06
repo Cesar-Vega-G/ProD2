@@ -27,6 +27,7 @@ public class ChallengeSystem : MonoBehaviour
 
     public void GenerateRandomChallenge()
     {
+        Debug.Log("Entra challenge");
         // Lógica para generar un reto aleatorio
         currentChallenge = new Challenge
         {

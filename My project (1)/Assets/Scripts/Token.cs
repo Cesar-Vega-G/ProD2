@@ -17,16 +17,19 @@ public class Token : MonoBehaviour
     {
         if (TreeManager.Instance != null)
         {
+            Debug.Log("Collect");
             TreeManager.Instance.InsertValue(collectorId, value);
-
+            Destroy(gameObject);
             // ✅ También sumamos puntos al puntaje del jugador
             if (GameManager.Instance != null)
             {
                 GameManager.Instance.AddScore(collectorId, value);  // O el valor que decidas
+                
             }
+
 
             
         }
-        Destroy(gameObject);
+        
     }
 }

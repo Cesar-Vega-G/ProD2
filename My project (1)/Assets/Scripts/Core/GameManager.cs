@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Settings")]
     [SerializeField] private float gameDuration = 180f; // 3 minutos
-    [SerializeField] private int playersCount = 2;
+    [SerializeField] private int playersCount = 1;
 
     private float remainingTime;
     private bool isGameActive;
