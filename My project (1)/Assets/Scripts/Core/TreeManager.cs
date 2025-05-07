@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 public class TreeManager : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class TreeManager : MonoBehaviour
 
     public enum TreeType { BST, AVL, BTree }
 
+    // Evento para actualización de árboles
+    public event Action<int, ITree> OnTreeUpdated;
+
     [SerializeField] private TreeType initialTreeType = TreeType.BST;
     private PlayerTree[] playerTrees;
     private ChallengeSystem challengeSystem;
@@ -22,6 +26,7 @@ public class TreeManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -55,34 +60,27 @@ public class TreeManager : MonoBehaviour
         {
             case TreeType.BST: return new BST();
             case TreeType.AVL: return new AVL();
-            case TreeType.BTree: return new BTree(2); // Grado 2 para B-Tree
+            case TreeType.BTree: return new BTree(3); // Grado 3 para B-Tree
             default: return new BST();
         }
     }
 
     public void InsertValue(int playerId, int value)
     {
-        Debug.Log("Insert");
         if (playerId < 0 || playerId >= playerTrees.Length) return;
 
-        var tree = playerTrees[playerId].tree;
+        playerTrees[playerId].tree.Insert(value);
+        OnTreeUpdated?.Invoke(playerId, playerTrees[playerId].tree);
 
-        tree.Insert(value);
-
-        Debug.Log($"Player {playerId + 1} tree: {tree.Traversal()}");
-
-        // Verificar desafío si el sistema está presente
+        // Verificar desafío
         if (challengeSystem != null)
         {
-            bool completed = challengeSystem.CheckChallenge(playerId, tree);
+            bool completed = challengeSystem.CheckChallenge(playerId, playerTrees[playerId].tree);
             if (completed)
             {
-                Debug.Log($"🎉 Player {playerId + 1} COMPLETED the challenge: {challengeSystem.GetCurrentChallengeDescription()}");
+                Debug.Log($"Player {playerId + 1} completed the challenge!");
+                GameManager.Instance.AddScore(playerId, 50); // Bonus por reto completado
                 challengeSystem.GenerateRandomChallenge();
-                if (GameManager.Instance != null)
-                {
-                    GameManager.Instance.AddScore(playerId, 50); // Bonus de ejemplo
-                }
             }
         }
     }
@@ -91,10 +89,18 @@ public class TreeManager : MonoBehaviour
     {
         if (playerId < 0 || playerId >= playerTrees.Length)
         {
-            Debug.LogWarning("Jugador no encontrado");
             return null;
         }
-        return playerTrees[playerId].tree;  // Devuelve el árbol del jugador
+        return playerTrees[playerId].tree;
+    }
+
+    public TreeType GetPlayerTreeType(int playerId)
+    {
+        if (playerId < 0 || playerId >= playerTrees.Length)
+        {
+            return TreeType.BST;
+        }
+        return playerTrees[playerId].type;
     }
 
     public void SwitchTreeType(int playerId, TreeType newType)
@@ -103,10 +109,7 @@ public class TreeManager : MonoBehaviour
         {
             playerTrees[playerId].type = newType;
             playerTrees[playerId].tree = CreateTree(newType);
+            OnTreeUpdated?.Invoke(playerId, playerTrees[playerId].tree);
         }
     }
 }
-
-
-
-

@@ -1,13 +1,18 @@
 ﻿using UnityEngine;
+using System;
 
 public class GameManager : MonoBehaviour
 {
     // Singleton pattern para acceso global
     public static GameManager Instance { get; private set; }
 
+    // Eventos para la UI
+    public event Action OnScoreChanged;
+    public event Action OnGameEnd;
+
     [Header("Game Settings")]
     [SerializeField] private float gameDuration = 180f; // 3 minutos
-    [SerializeField] private int playersCount = 1;
+    [SerializeField] private int playersCount = 2;
 
     private float remainingTime;
     private bool isGameActive;
@@ -30,11 +35,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         InitializeGame();
-    }
-
-    public int GetPlayersCount()
-    {
-        return playersCount;
     }
 
     private void InitializeGame()
@@ -61,7 +61,9 @@ public class GameManager : MonoBehaviour
         if (playerId >= 0 && playerId < playersCount)
         {
             playerScores[playerId] += points;
+            OnScoreChanged?.Invoke();
             Debug.Log($"Player {playerId + 1} scored! Total: {playerScores[playerId]}");
+            UIManager
         }
     }
 
@@ -79,9 +81,11 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.Log($"Player {winner + 1} wins with {playerScores[winner]} points!");
+        OnGameEnd?.Invoke();
     }
 
     // Métodos de ayuda
     public float GetRemainingTime() => remainingTime;
     public int GetPlayerScore(int playerId) => playerScores[playerId];
+    public int GetPlayersCount() => playersCount;
 }
