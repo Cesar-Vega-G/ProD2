@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 public class Token : MonoBehaviour
@@ -12,13 +12,24 @@ public class Token : MonoBehaviour
         if (valueText != null) valueText.text = value.ToString();
     }
 
-    // M�todo modificado
+    // Método modificado
     public void Collect(int collectorId)
     {
         if (TreeManager.Instance != null)
         {
+            Debug.Log("Collect");
             TreeManager.Instance.InsertValue(collectorId, value);
             Destroy(gameObject);
+            // ✅ También sumamos puntos al puntaje del jugador
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.AddScore(collectorId, value);  // O el valor que decidas
+                
+            }
+
+
+            
         }
+        
     }
 }

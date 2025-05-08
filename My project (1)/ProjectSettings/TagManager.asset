@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Player 2
+  - Player 1
+  - obsta
+  - Token
   layers:
   - Default
   - TransparentFX
@@ -11,7 +15,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

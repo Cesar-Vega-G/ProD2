@@ -15,6 +15,7 @@ public class TreeManager : MonoBehaviour
 
     [SerializeField] private TreeType initialTreeType = TreeType.BST;
     private PlayerTree[] playerTrees;
+    private ChallengeSystem challengeSystem;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class TreeManager : MonoBehaviour
     private void Start()
     {
         InitializeTrees();
+        challengeSystem = FindObjectOfType<ChallengeSystem>();
     }
 
     private void InitializeTrees()
@@ -60,15 +62,41 @@ public class TreeManager : MonoBehaviour
 
     public void InsertValue(int playerId, int value)
     {
+        Debug.Log("Insert");
         if (playerId < 0 || playerId >= playerTrees.Length) return;
 
-        playerTrees[playerId].tree.Insert(value);
-        Debug.Log($"Player {playerId + 1} tree: {playerTrees[playerId].tree.Traversal()}");
+        var tree = playerTrees[playerId].tree;
 
-        // Aquí luego se verificará si se completó un reto
+        tree.Insert(value);
+
+        Debug.Log($"Player {playerId + 1} tree: {tree.Traversal()}");
+
+        // Verificar desafío si el sistema está presente
+        if (challengeSystem != null)
+        {
+            bool completed = challengeSystem.CheckChallenge(playerId, tree);
+            if (completed)
+            {
+                Debug.Log($"🎉 Player {playerId + 1} COMPLETED the challenge: {challengeSystem.GetCurrentChallengeDescription()}");
+                challengeSystem.GenerateRandomChallenge();
+                if (GameManager.Instance != null)
+                {
+                    GameManager.Instance.AddScore(playerId, 50); // Bonus de ejemplo
+                }
+            }
+        }
     }
 
-    // Para cambiar el tipo de árbol durante el juego
+    public ITree GetPlayerTree(int playerId)
+    {
+        if (playerId < 0 || playerId >= playerTrees.Length)
+        {
+            Debug.LogWarning("Jugador no encontrado");
+            return null;
+        }
+        return playerTrees[playerId].tree;  // Devuelve el árbol del jugador
+    }
+
     public void SwitchTreeType(int playerId, TreeType newType)
     {
         if (playerId >= 0 && playerId < playerTrees.Length)
@@ -78,3 +106,7 @@ public class TreeManager : MonoBehaviour
         }
     }
 }
+
+
+
+

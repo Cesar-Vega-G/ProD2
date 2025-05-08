@@ -38,8 +38,10 @@ public class TilemapPlatformManager : MonoBehaviour
 
     void GeneratePlatforms()
     {
-        // ✅ Plataforma inicial en (0, 0)
-        PlacePlatform(mainTile, platform9x1, Vector2Int.zero);
+
+        // ✅ Plataforma inicial en (-3, 0)
+        PlacePlatform(mainTile, platform9x1, new Vector2Int(-3, 0));
+
 
         // Inicializamos la primera capa en Y = spawnAreaMin.y
         currentLayerY = spawnAreaMin.y;
@@ -64,7 +66,9 @@ public class TilemapPlatformManager : MonoBehaviour
             // ¿Ya llenamos esta capa?
             if (platformsInCurrentLayer >= platformsPerLayer)
             {
-                currentLayerY+=3; // Subimos 3 unidades en Y (a la siguiente capa)
+
+                currentLayerY += 3; // Subimos 3 unidades en Y (a la siguiente capa)
+
                 platformsInCurrentLayer = 0; // Reiniciamos contador para la nueva capa
             }
         }
@@ -93,7 +97,7 @@ public class TilemapPlatformManager : MonoBehaviour
         return new Vector2Int(0, currentLayerY); // fallback seguro
     }
 
-    
+
 
     bool IsAreaClear(Vector2Int origin, Vector2Int[] platformTemplate)
     {

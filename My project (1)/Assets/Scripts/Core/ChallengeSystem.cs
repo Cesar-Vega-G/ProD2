@@ -27,6 +27,7 @@ public class ChallengeSystem : MonoBehaviour
 
     public void GenerateRandomChallenge()
     {
+        Debug.Log("Entra challenge");
         // Lógica para generar un reto aleatorio
         currentChallenge = new Challenge
         {
@@ -48,7 +49,10 @@ public class ChallengeSystem : MonoBehaviour
             _ => "Unknown challenge"
         };
     }
-
+    public string GetCurrentChallengeDescription()
+    {
+        return currentChallenge != null ? currentChallenge.description : "No active challenge";
+    }
     public bool CheckChallenge(int playerId, ITree tree)
     {
         if (currentChallenge == null) return false;
