@@ -1,34 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\",
+  "WorkspaceRootPath": "C:\\Users\\cesar\\OneDrive\\Documents\\Tercer Semestre\\Datos\\ProD2\\My project (1)\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Players\\Player2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Players\\Player2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cesar\\OneDrive\\Documents\\Tercer Semestre\\Datos\\ProD2\\My project (1)\\Assets\\Scripts\\Players\\BasePlayerController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Players\\BasePlayerController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Players\\Player1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cesar\\OneDrive\\Documents\\Tercer Semestre\\Datos\\ProD2\\My project (1)\\Assets\\Scripts\\Players\\Poderes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Players\\Poderes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cesar\\OneDrive\\Documents\\Tercer Semestre\\Datos\\ProD2\\My project (1)\\Assets\\Scripts\\Players\\Player1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Players\\Player1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Token.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Token.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Core\\ChallengeSystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Core\\ChallengeSystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Core\\TreeManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Core\\TreeManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\TreeVisualizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\TreeVisualizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Trees\\Interfaces\\ITree.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Trees\\Interfaces\\ITree.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cesar\\OneDrive\\Documents\\Tercer Semestre\\Datos\\ProD2\\My project (1)\\Assets\\Scripts\\Players\\Player2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Players\\Player2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,117 +26,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:130:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Player2.cs",
-              "DocumentMoniker": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Players\\Player2.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Players\\Player2.cs",
-              "ToolTip": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Players\\Player2.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Players\\Player2.cs",
-              "ViewState": "AgIAALEAAAAAAAAAAAAAABEAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T09:56:47.655Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "ChallengeSystem.cs",
-              "DocumentMoniker": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Core\\ChallengeSystem.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\ChallengeSystem.cs",
-              "ToolTip": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Core\\ChallengeSystem.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Core\\ChallengeSystem.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAADUAAAAFAAAAAAAAAA==",
+              "Title": "Player2.cs",
+              "DocumentMoniker": "C:\\Users\\cesar\\OneDrive\\Documents\\Tercer Semestre\\Datos\\ProD2\\My project (1)\\Assets\\Scripts\\Players\\Player2.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Players\\Player2.cs",
+              "ToolTip": "C:\\Users\\cesar\\OneDrive\\Documents\\Tercer Semestre\\Datos\\ProD2\\My project (1)\\Assets\\Scripts\\Players\\Player2.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Players\\Player2.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T09:32:04.353Z",
+              "WhenOpened": "2025-05-05T09:56:47.655Z",
+              "IsPinned": true,
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Token.cs",
-              "DocumentMoniker": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Token.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Token.cs",
-              "ToolTip": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Token.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Token.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAQwB0AAAAcAAAAAAAAAA==",
+              "Title": "Player1.cs",
+              "DocumentMoniker": "C:\\Users\\cesar\\OneDrive\\Documents\\Tercer Semestre\\Datos\\ProD2\\My project (1)\\Assets\\Scripts\\Players\\Player1.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Players\\Player1.cs",
+              "ToolTip": "C:\\Users\\cesar\\OneDrive\\Documents\\Tercer Semestre\\Datos\\ProD2\\My project (1)\\Assets\\Scripts\\Players\\Player1.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Players\\Player1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T09:26:38.43Z",
+              "WhenOpened": "2025-05-05T08:42:30.335Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ITree.cs",
-              "DocumentMoniker": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Trees\\Interfaces\\ITree.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Trees\\Interfaces\\ITree.cs",
-              "ToolTip": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Trees\\Interfaces\\ITree.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Trees\\Interfaces\\ITree.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "BasePlayerController.cs",
+              "DocumentMoniker": "C:\\Users\\cesar\\OneDrive\\Documents\\Tercer Semestre\\Datos\\ProD2\\My project (1)\\Assets\\Scripts\\Players\\BasePlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Players\\BasePlayerController.cs",
+              "ToolTip": "C:\\Users\\cesar\\OneDrive\\Documents\\Tercer Semestre\\Datos\\ProD2\\My project (1)\\Assets\\Scripts\\Players\\BasePlayerController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Players\\BasePlayerController.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAAAGwAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T09:07:22.459Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TreeVisualizer.cs",
-              "DocumentMoniker": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\TreeVisualizer.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\TreeVisualizer.cs",
-              "ToolTip": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\TreeVisualizer.cs",
-              "RelativeToolTip": "Assets\\Scripts\\TreeVisualizer.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAAAIEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T09:02:16.042Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "TreeManager.cs",
-              "DocumentMoniker": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Core\\TreeManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\TreeManager.cs",
-              "ToolTip": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Core\\TreeManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Core\\TreeManager.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAACMAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T08:43:50.089Z",
+              "WhenOpened": "2025-05-07T18:48:59.527Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Player1.cs",
-              "DocumentMoniker": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Players\\Player1.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Players\\Player1.cs",
-              "ToolTip": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Players\\Player1.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Players\\Player1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKYAAAAAAAAAAAAAAA==",
+              "Title": "Poderes.cs",
+              "DocumentMoniker": "C:\\Users\\cesar\\OneDrive\\Documents\\Tercer Semestre\\Datos\\ProD2\\My project (1)\\Assets\\Scripts\\Players\\Poderes.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Players\\Poderes.cs",
+              "ToolTip": "C:\\Users\\cesar\\OneDrive\\Documents\\Tercer Semestre\\Datos\\ProD2\\My project (1)\\Assets\\Scripts\\Players\\Poderes.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Players\\Poderes.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T08:42:30.335Z",
+              "WhenOpened": "2025-05-07T21:42:53.634Z",
               "EditorCaption": ""
             }
           ]

@@ -1139,6 +1139,7 @@ GameObject:
   - component: {fileID: 1202996678}
   - component: {fileID: 1202996679}
   - component: {fileID: 1202996680}
+  - component: {fileID: 1202996681}
   m_Layer: 6
   m_Name: Player 1
   m_TagString: Player 1
@@ -1292,6 +1293,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73330e525d7b7e242824e2546dd8e837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velocidadMovimiento: 1
+  fuerzaSalto: 4.5
+  distanciaRaycastSuelo: 0.2
+  offsetRaycastSuelo: {x: 0, y: -0.1}
+  playerId: 1
+  fuerzaGolpe: 1.8
+  distanciaGolpe: 0.2
+  capaJugador:
+    serializedVersion: 2
+    m_Bits: 72
 --- !u!95 &1202996678
 Animator:
   serializedVersion: 7
@@ -1372,16 +1383,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acfc9e72cf3aac546a3ae925271be73a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMovimiento: 1
-  fuerzaSalto: 4.5
-  distanciaRaycastSuelo: 0.2
-  offsetRaycastSuelo: {x: 0, y: -0.01}
-  playerId: 1
-  fuerzaGolpe: 10
-  distanciaGolpe: 1.5
-  capaJugador:
-    serializedVersion: 2
-    m_Bits: 0
+--- !u!114 &1202996681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202996672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f68437793ab5041995627fb090990c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1210158988
 GameObject:
   m_ObjectHideFlags: 0
@@ -4139,7 +4152,8 @@ GameObject:
   - component: {fileID: 1935575679}
   - component: {fileID: 1935575680}
   - component: {fileID: 1935575685}
-  m_Layer: 0
+  - component: {fileID: 1935575686}
+  m_Layer: 6
   m_Name: Player 2
   m_TagString: Player 2
   m_Icon: {fileID: 0}
@@ -4370,6 +4384,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.0001, y: 0.0001}
   m_EdgeRadius: 0
+--- !u!114 &1935575686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935575678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f68437793ab5041995627fb090990c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2028957879
 GameObject:
   m_ObjectHideFlags: 0
