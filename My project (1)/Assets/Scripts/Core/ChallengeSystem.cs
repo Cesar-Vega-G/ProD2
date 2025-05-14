@@ -49,20 +49,57 @@ public class ChallengeSystem : MonoBehaviour
             _ => "Unknown challenge"
         };
     }
+
     public string GetCurrentChallengeDescription()
     {
         return currentChallenge != null ? currentChallenge.description : "No active challenge";
     }
-    public bool CheckChallenge(int playerId, ITree tree)
+
+    public bool CheckChallenge(int playerId, object tree)
     {
         if (currentChallenge == null) return false;
 
         return currentChallenge.type switch
         {
-            ChallengeType.ReachDepth => tree.Depth() >= currentChallenge.targetValue,
-            ChallengeType.BalanceTree => tree is AVL avlTree && avlTree.IsValid(),
-            ChallengeType.CompleteStructure => tree is BTree bTree && bTree.IsPerfect(),
+            ChallengeType.ReachDepth => CheckReachDepth(tree),
+            ChallengeType.BalanceTree => CheckBalanceTree(tree),
+            ChallengeType.CompleteStructure => CheckCompleteStructure(tree),
             _ => false
         };
+    }
+
+    private bool CheckReachDepth(object tree)
+    {
+        if (tree is BST bst)
+        {
+            return bst.Depth() >= currentChallenge.targetValue;
+        }
+        else if (tree is AVL avl)
+        {
+            return avl.Depth() >= currentChallenge.targetValue;
+        }
+        else if (tree is BTree bTree)
+        {
+            return bTree.Depth() >= currentChallenge.targetValue;
+        }
+        return false;
+    }
+
+    private bool CheckBalanceTree(object tree)
+    {
+        if (tree is AVL avlTree)
+        {
+            return avlTree.IsValid();  // Verificar si el árbol AVL está balanceado
+        }
+        return false;
+    }
+
+    private bool CheckCompleteStructure(object tree)
+    {
+        if (tree is BTree bTree)
+        {
+            return bTree.IsPerfect();  // Verificar si el árbol B es perfecto
+        }
+        return false;
     }
 }

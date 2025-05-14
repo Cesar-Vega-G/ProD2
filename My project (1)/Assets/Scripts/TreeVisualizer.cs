@@ -10,11 +10,10 @@ public class TreeVisualizer : MonoBehaviour
 
     private List<GameObject> spawnedNodes = new List<GameObject>();
 
-    
     // Llama este método para redibujar el árbol de un jugador
-    public void DrawTree(ITree tree)
+    public void DrawTree(object tree)
     {
-        //ClearTree();  // 🔄 Primero limpiamos cualquier árbol previo
+        // ClearTree();  // 🔄 Primero limpiamos cualquier árbol previo
 
         if (tree == null)
         {
@@ -22,7 +21,7 @@ public class TreeVisualizer : MonoBehaviour
             return;
         }
 
-        // Detectamos el tipo de árbol (solo binarios por ahora)
+        // Detectamos el tipo de árbol (BST, AVL, o BTree)
         if (tree is AVL avl)
         {
             Debug.LogWarning("1");
@@ -30,8 +29,13 @@ public class TreeVisualizer : MonoBehaviour
         }
         else if (tree is BST bst)
         {
-            Debug.LogWarning("1");
+            Debug.LogWarning("2");
             DrawBinaryTree(GetRoot(bst), transform.position, horizontalSpacing);
+        }
+        else if (tree is BTree bTree)
+        {
+            Debug.LogWarning("3");
+            DrawBTree(bTree, transform.position, horizontalSpacing); // Función para BTree
         }
         else
         {
@@ -83,12 +87,41 @@ public class TreeVisualizer : MonoBehaviour
         }
     }
 
+    // 🎯 Dibuja un BTree
+    private void DrawBTree(BTree bTree, Vector3 position, float hSpacing)
+    {
+        var root = GetRoot(bTree);
+        DrawBTreeNode(root, position, hSpacing);
+    }
+
+    private void DrawBTreeNode(BTreeNode node, Vector3 position, float hSpacing)
+    {
+        if (node == null) return;
+
+        // 👉 Crear el nodo visual
+        var nodeObj = Instantiate(nodePrefab, position, Quaternion.identity, transform);
+        spawnedNodes.Add(nodeObj);
+
+        var visual = nodeObj.GetComponent<TreeNodeVisual>();
+        if (visual != null)
+        {
+            visual.SetValue(node.Keys[0]);  // Mostrar la primera clave del nodo
+        }
+
+        // 🌿 Dibujar hijos
+        for (int i = 0; i < node.Children.Count; i++)
+        {
+            Vector3 childPos = position + new Vector3(i == 0 ? -hSpacing : hSpacing, -verticalSpacing, 0);
+            DrawBTreeNode(node.Children[i], childPos, hSpacing / 1.5f);
+        }
+    }
+
     // Helpers: extraen valor, hijo izquierdo, hijo derecho (AVL y BST)
     private int GetNodeValue(object node)
     {
         if (node is AVLNode avlNode)
             return avlNode.Value;
-        if (node is BSTNode bstNode)
+        if (node is BST.BSTNode bstNode)
             return bstNode.Value;
         return -1;
     }
@@ -97,7 +130,7 @@ public class TreeVisualizer : MonoBehaviour
     {
         if (node is AVLNode avlNode)
             return avlNode.Left;
-        if (node is BSTNode bstNode)
+        if (node is BST.BSTNode bstNode)
             return bstNode.Left;
         return null;
     }
@@ -106,7 +139,7 @@ public class TreeVisualizer : MonoBehaviour
     {
         if (node is AVLNode avlNode)
             return avlNode.Right;
-        if (node is BSTNode bstNode)
+        if (node is BST.BSTNode bstNode)
             return bstNode.Right;
         return null;
     }
@@ -118,9 +151,15 @@ public class TreeVisualizer : MonoBehaviour
         return (AVLNode)GetPrivateField(avl, "root");
     }
 
-    private BSTNode GetRoot(BST bst)
+    private BST.BSTNode GetRoot(BST bst)
     {
-        return (BSTNode)GetPrivateField(bst, "root");
+        return (BST.BSTNode)GetPrivateField(bst, "root");
+    }
+
+    private BTreeNode GetRoot(BTree bTree)
+    {
+        // Asumimos que BTree tiene una forma de exponer la raíz (agregá esto si no existe)
+        return (BTreeNode)GetPrivateField(bTree, "root");
     }
 
     private object GetPrivateField(object obj, string fieldName)
@@ -130,4 +169,5 @@ public class TreeVisualizer : MonoBehaviour
         return field?.GetValue(obj);
     }
 }
+
 

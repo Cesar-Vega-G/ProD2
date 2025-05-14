@@ -4166,6 +4166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialTreeType: 0
+  nodePrefab: {fileID: 8355452247491846259, guid: 7983fd1ceb7e0a04a95e420ea6305d0d, type: 3}
 --- !u!114 &1323585552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4202,7 +4203,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1323585550}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9de2f29a5d43f14eafce5cb66f470d7, type: 3}
   m_Name: 
@@ -4695,6 +4696,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4511252574078054800, guid: 7983fd1ceb7e0a04a95e420ea6305d0d, type: 3}
+      propertyPath: m_text
+      value: '20
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 7339451517407102830, guid: 7983fd1ceb7e0a04a95e420ea6305d0d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -1,50 +1,115 @@
-﻿using System;
+﻿using UnityEngine;
+using System;
 using System.Text;
 
-public class BST : ITree
+public class BST : MonoBehaviour
 {
-    public BSTNode Root { get; private set; }
-    public int NodeCount { get; private set; }
+    public class BSTNode : MonoBehaviour
+    {
+        public int Value;
+        public BSTNode Left;
+        public BSTNode Right;
+        public Vector2 Position;  // Para la posición del nodo
+
+        public BSTNode(int value)
+        {
+            Value = value;
+            Left = Right = null;
+            Position = Vector2.zero; // Inicializa la posición
+        }
+    }
+
+    private BSTNode root;
+    private GameObject nodePrefab;  // Prefab del nodo
+
+    public BST(GameObject prefab)
+    {
+        nodePrefab = prefab;
+        root = null;
+    }
+    public int Depth()
+    {
+        return GetDepth(root);
+    }
+
+    // Método recursivo para obtener la profundidad de un nodo
 
     public void Insert(int value)
     {
-        Root = InsertRec(Root, value);
-        NodeCount++;
+        root = InsertRec(root, value, Vector2.zero);  // Posición inicial
     }
 
-    private BSTNode InsertRec(BSTNode node, int value)
+    private BSTNode InsertRec(BSTNode node, int value, Vector2 position)
     {
-        if (node == null) return new BSTNode(value);
+        if (node == null)
+        {
+            BSTNode newNode = new BSTNode(value) { Position = position };
+            CreateNodePrefab(newNode);  // Crear el prefab del nodo
+            return newNode;
+        }
 
         if (value < node.Value)
-            node.Left = InsertRec(node.Left, value);
+            node.Left = InsertRec(node.Left, value, new Vector2(position.x - 2, position.y - 2));  // Ajustar posiciones
         else if (value > node.Value)
-            node.Right = InsertRec(node.Right, value);
+            node.Right = InsertRec(node.Right, value, new Vector2(position.x + 2, position.y - 2));
 
         return node;
     }
 
-    public int Depth() => DepthRec(Root);
-
-    private int DepthRec(BSTNode node)
+    private void CreateNodePrefab(BSTNode node)
     {
-        if (node == null) return 0;
-        return 1 + Math.Max(DepthRec(node.Left), DepthRec(node.Right));
+        // Crear el prefab en la posición correspondiente
+        GameObject newNodeObject = Instantiate(nodePrefab, new Vector3(node.Position.x, node.Position.y, 0), Quaternion.identity);
+        newNodeObject.name = node.Value.ToString();  // Nombre del nodo es el valor
+    }
+    public bool IsPerfect()
+    {
+        // Verifica si el árbol tiene la misma profundidad en todas las hojas y si todos los nodos internos tienen dos hijos
+        int depth = GetDepth(root);
+        return IsPerfectRec(root, 0, depth);
     }
 
-    public bool IsValid() => IsValidBST(Root, int.MinValue, int.MaxValue);
-
-    private bool IsValidBST(BSTNode node, int min, int max)
+    // Método recursivo que verifica si el árbol es perfecto
+    private bool IsPerfectRec(BSTNode node, int currentDepth, int expectedDepth)
     {
-        if (node == null) return true;
-        if (node.Value < min || node.Value > max) return false;
-        return IsValidBST(node.Left, min, node.Value - 1) &&
-               IsValidBST(node.Right, node.Value + 1, max);
+        if (node == null)
+        {
+            return true; // Si es null, no hay nada que verificar
+        }
+
+        // Si es una hoja (nodo sin hijos)
+        if (node.Left == null && node.Right == null)
+        {
+            return currentDepth == expectedDepth;  // Verifica si la hoja está a la profundidad correcta
+        }
+
+        // Si no es hoja, asegurarse de que tenga ambos hijos
+        if (node.Left == null || node.Right == null)
+        {
+            return false; // Si falta uno de los hijos, no es perfecto
+        }
+
+        // Verifica recursivamente en los subárboles izquierdo y derecho
+        return IsPerfectRec(node.Left, currentDepth + 1, expectedDepth) &&
+               IsPerfectRec(node.Right, currentDepth + 1, expectedDepth);
     }
 
-    public string GetTreeType() => "BST";
-
-    public string Traversal() => InOrder(Root, new StringBuilder()).ToString();
+    // Método auxiliar para obtener la profundidad del árbol
+    private int GetDepth(BSTNode node)
+    {
+        int depth = 0;
+        while (node != null)
+        {
+            depth++;
+            node = node.Left; // Bajar hacia el lado izquierdo (todas las hojas deben estar a la misma profundidad)
+        }
+        return depth;
+    }
+    public string Traversal()
+    {
+        // Recorrido in-order para mostrar los valores de los nodos
+        return InOrder(root, new StringBuilder()).ToString();
+    }
 
     private StringBuilder InOrder(BSTNode node, StringBuilder sb)
     {
@@ -54,23 +119,6 @@ public class BST : ITree
         InOrder(node.Right, sb);
         return sb;
     }
-
-    public bool CheckChallenge(ChallengeType challenge)
-    {
-        return challenge switch
-        {
-            ChallengeType.DepthReached => Depth() >= 6,
-            ChallengeType.CompleteStructure => IsComplete(Root),
-            _ => false
-        };
-    }
-
-    private bool IsComplete(BSTNode node)
-    {
-        if (node == null) return true;
-        if (node.Left == null && node.Right == null) return true;
-        if (node.Left != null && node.Right != null)
-            return IsComplete(node.Left) && IsComplete(node.Right);
-        return false;
-    }
 }
+
+
