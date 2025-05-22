@@ -3,48 +3,48 @@ using UnityEngine;
 
 public class AVL : MonoBehaviour
 {
-    private class AVLNode : MonoBehaviour
+    private class AVLNode
     {
         public int Value;
         public AVLNode Left;
         public AVLNode Right;
         public int Height;
-        public Vector2 Position;  // Para la posición del nodo
+        public Vector2 Position;
+        public GameObject visualNodeObject;
 
         public AVLNode(int value)
         {
             Value = value;
             Height = 1;
             Left = Right = null;
-            Position = Vector2.zero; // Inicializa la posición
+            Position = Vector2.zero;
         }
     }
-
+    public Vector2 rootStartPosition = new Vector2(2f, 2f);
     private AVLNode root;
-    private GameObject nodePrefab;  // Prefab del nodo
+    public GameObject nodePrefab;
+    public GameObject linePrefab;
+    private readonly System.Collections.Generic.List<GameObject> lines = new System.Collections.Generic.List<GameObject>();
 
-    public AVL(GameObject prefab)
-    {
-        nodePrefab = prefab;
-        root = null;
-    }
     public int Depth()
     {
         return GetDepth(root);
     }
 
-    // Método recursivo para obtener la profundidad de un nodo
     private int GetDepth(AVLNode node)
     {
         if (node == null)
-            return 0;  // Un nodo nulo tiene profundidad 0
+            return 0;
 
-        // La profundidad de un nodo es 1 + la mayor profundidad de sus hijos
         return 1 + Math.Max(GetDepth(node.Left), GetDepth(node.Right));
     }
+    
     public void Insert(int value)
     {
-        root = InsertRec(root, value, Vector2.zero);  // Posición inicial
+        root = InsertRec(root, value, rootStartPosition);
+        float initialHorizontalSpacing =0.5f;
+        UpdateNodePositions(root, rootStartPosition, initialHorizontalSpacing);
+        UpdateAllLines();
     }
 
     private AVLNode InsertRec(AVLNode node, int value, Vector2 position)
@@ -52,22 +52,35 @@ public class AVL : MonoBehaviour
         if (node == null)
         {
             AVLNode newNode = new AVLNode(value) { Position = position };
-            CreateNodePrefab(newNode);  // Crear el prefab del nodo
+            CreateNodePrefab(newNode);
             return newNode;
         }
 
-        if (value < node.Value)
-            node.Left = InsertRec(node.Left, value, new Vector2(position.x - 2, position.y - 2));  // Ajustar posiciones
-        else if (value > node.Value)
-            node.Right = InsertRec(node.Right, value, new Vector2(position.x + 2, position.y - 2));
+        float offsetX = 0.5f; // ajusta según quieras distancia menor o mayor
+        float offsetY = 0.5f;
 
-        // Actualizar altura
+        if (value < node.Value)
+        {
+            Vector2 leftPos = new Vector2(position.x - offsetX, position.y - offsetY);
+            node.Left = InsertRec(node.Left, value, leftPos);
+            CreateLine(node.Position, leftPos);
+        }
+        else if (value > node.Value)
+        {
+            Vector2 rightPos = new Vector2(position.x + offsetX, position.y - offsetY);
+            node.Right = InsertRec(node.Right, value, rightPos);
+            CreateLine(node.Position, rightPos);
+        }
+        else
+        {
+            Debug.Log($"Valor {value} ya existe en el árbol.");
+        }
+
         node.Height = 1 + Math.Max(GetHeight(node.Left), GetHeight(node.Right));
 
-        // Balancear el árbol
         int balance = GetBalance(node);
 
-        // Casos de rotación
+        // Rotaciones AVL
         if (balance > 1 && value < node.Left.Value)
             return RightRotate(node);
 
@@ -94,11 +107,9 @@ public class AVL : MonoBehaviour
         AVLNode x = y.Left;
         AVLNode T2 = x.Right;
 
-        // Realizar rotación
         x.Right = y;
         y.Left = T2;
 
-        // Actualizar alturas
         y.Height = 1 + Math.Max(GetHeight(y.Left), GetHeight(y.Right));
         x.Height = 1 + Math.Max(GetHeight(x.Left), GetHeight(x.Right));
 
@@ -110,22 +121,110 @@ public class AVL : MonoBehaviour
         AVLNode y = x.Right;
         AVLNode T2 = y.Left;
 
-        // Realizar rotación
         y.Left = x;
         x.Right = T2;
 
-        // Actualizar alturas
         x.Height = 1 + Math.Max(GetHeight(x.Left), GetHeight(x.Right));
         y.Height = 1 + Math.Max(GetHeight(y.Left), GetHeight(y.Right));
 
         return y;
     }
+
+    private int GetHeight(AVLNode node)
+    {
+        return node?.Height ?? 0;
+    }
+
+    private int GetBalance(AVLNode node)
+    {
+        if (node == null) return 0;
+        return GetHeight(node.Left) - GetHeight(node.Right);
+    }
+
+    private void CreateNodePrefab(AVLNode node)
+    {
+        GameObject newNodeObject = Instantiate(nodePrefab, new Vector3(node.Position.x, node.Position.y, 0), Quaternion.identity, this.transform);
+        newNodeObject.name = node.Value.ToString();
+
+        var token = newNodeObject.GetComponent<Token>();
+        if (token != null)
+            token.Initialize(node.Value);
+
+        node.visualNodeObject = newNodeObject;
+    }
+    private void UpdateNodePositions(AVLNode node, Vector2 position, float horizontalSpacing)
+    {
+        if (node == null) return;
+
+        node.Position = position;
+
+        if (node.visualNodeObject != null)
+            node.visualNodeObject.transform.position = new Vector3(position.x, position.y, 0);
+
+
+        float offsetY = 0.3f;
+
+        float childSpacing = horizontalSpacing / 2f;
+
+        UpdateNodePositions(node.Left, new Vector2(position.x - horizontalSpacing, position.y - offsetY), childSpacing);
+        UpdateNodePositions(node.Right, new Vector2(position.x + horizontalSpacing, position.y - offsetY), childSpacing);
+    }
+
+
+    private void CreateLine(Vector2 startPos, Vector2 endPos)
+    {
+        if (linePrefab == null) return;
+
+        GameObject lineObj = Instantiate(linePrefab, Vector3.zero, Quaternion.identity, this.transform);
+        lines.Add(lineObj);
+
+        LineRenderer lr = lineObj.GetComponent<LineRenderer>();
+        if (lr != null)
+        {
+            lr.positionCount = 2;
+            lr.SetPosition(0, new Vector3(startPos.x, startPos.y, 0));
+            lr.SetPosition(1, new Vector3(endPos.x, endPos.y, 0));
+        }
+    }
+    private void ClearLines()
+    {
+        foreach (var line in lines)
+        {
+            if (line != null)
+                Destroy(line);
+        }
+        lines.Clear();
+    }
+    private void UpdateAllLines()
+    {
+        ClearLines();
+        CreateLinesRec(root);
+    }
+
+    private void CreateLinesRec(AVLNode node)
+    {
+        if (node == null) return;
+
+        if (node.Left != null)
+        {
+            CreateLine(node.Position, node.Left.Position);
+            CreateLinesRec(node.Left);
+        }
+        if (node.Right != null)
+        {
+            CreateLine(node.Position, node.Right.Position);
+            CreateLinesRec(node.Right);
+        }
+    }
+
+
     public bool IsValid()
     {
         return IsBalanced(root) && IsBST(root, int.MinValue, int.MaxValue);
     }
 
-    // Verifica si el árbol está balanceado (la diferencia de alturas no debe ser mayor a 1)
+  
+
     private bool IsBalanced(AVLNode node)
     {
         if (node == null)
@@ -135,17 +234,6 @@ public class AVL : MonoBehaviour
         return Math.Abs(balance) <= 1 && IsBalanced(node.Left) && IsBalanced(node.Right);
     }
 
-    // Calcula el balance de un nodo (diferencia entre las alturas de los subárboles izquierdo y derecho)
-    private int GetBalance(AVLNode node)
-    {
-        if (node == null)
-            return 0;
-        return GetHeight(node.Left) - GetHeight(node.Right);
-    }
-
-
-
-    // Verifica si el árbol cumple con las reglas del BST
     private bool IsBST(AVLNode node, int min, int max)
     {
         if (node == null)
@@ -157,19 +245,6 @@ public class AVL : MonoBehaviour
         return IsBST(node.Left, min, node.Value - 1) &&
                IsBST(node.Right, node.Value + 1, max);
     }
-    private int GetHeight(AVLNode node)
-    {
-        return node?.Height ?? 0;
-    }
-
-
-
-    private void CreateNodePrefab(AVLNode node)
-    {
-        // Crear el prefab en la posición correspondiente
-        GameObject newNodeObject = Instantiate(nodePrefab, new Vector3(node.Position.x, node.Position.y, 0), Quaternion.identity);
-        newNodeObject.name = node.Value.ToString();  // Nombre del nodo es el valor
-    }
 
     public string Traversal()
     {
@@ -178,11 +253,10 @@ public class AVL : MonoBehaviour
 
     private string InOrderTraversal(AVLNode node)
     {
-        if (node == null)
-            return "";
-
+        if (node == null) return "";
         return InOrderTraversal(node.Left) + node.Value + " " + InOrderTraversal(node.Right);
     }
 }
+
 
 

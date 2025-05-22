@@ -11,7 +11,11 @@ public class Token : MonoBehaviour
         value = tokenValue;
         if (valueText != null) valueText.text = value.ToString();
     }
-
+    public void Initialize2(string tokenValueText)
+    {
+        if (valueText != null)
+            valueText.text = tokenValueText;
+    }
     // Método modificado
     public void Collect(int collectorId)
     {

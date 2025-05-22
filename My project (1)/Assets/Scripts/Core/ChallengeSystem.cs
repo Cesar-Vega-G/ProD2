@@ -62,27 +62,31 @@ public class ChallengeSystem : MonoBehaviour
         return currentChallenge.type switch
         {
             ChallengeType.ReachDepth => CheckReachDepth(tree),
-            ChallengeType.BalanceTree => CheckBalanceTree(tree),
-            ChallengeType.CompleteStructure => CheckCompleteStructure(tree),
+            //ChallengeType.BalanceTree => CheckBalanceTree(tree),
+            //ChallengeType.CompleteStructure => CheckCompleteStructure(tree),
             _ => false
         };
     }
 
     private bool CheckReachDepth(object tree)
     {
-        if (tree is BST bst)
+        /*if (tree is BST bst)
         {
             return bst.Depth() >= currentChallenge.targetValue;
         }
-        else if (tree is AVL avl)
+        
+        if (tree is AVL avl)
         {
             return avl.Depth() >= currentChallenge.targetValue;
         }
-        else if (tree is BTree bTree)
+        
+        if (tree is BTree bTree)
         {
             return bTree.Depth() >= currentChallenge.targetValue;
         }
         return false;
+        */
+        return true;
     }
 
     private bool CheckBalanceTree(object tree)
@@ -92,14 +96,16 @@ public class ChallengeSystem : MonoBehaviour
             return avlTree.IsValid();  // Verificar si el árbol AVL está balanceado
         }
         return false;
+        
     }
 
     private bool CheckCompleteStructure(object tree)
-    {
+    {/*
         if (tree is BTree bTree)
         {
             return bTree.IsPerfect();  // Verificar si el árbol B es perfecto
         }
+        */
         return false;
     }
 }

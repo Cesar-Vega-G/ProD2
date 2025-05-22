@@ -1,124 +1,110 @@
 ﻿using UnityEngine;
-using System;
 using System.Text;
 
 public class BST : MonoBehaviour
 {
-    public class BSTNode : MonoBehaviour
+    public GameObject nodePrefab;  // Prefab para crear nodos (asignado desde TreeManager)
+    public GameObject linePrefab;
+    public class BSTNode
     {
         public int Value;
         public BSTNode Left;
         public BSTNode Right;
-        public Vector2 Position;  // Para la posición del nodo
+        public Vector2 Position;
 
         public BSTNode(int value)
         {
             Value = value;
             Left = Right = null;
-            Position = Vector2.zero; // Inicializa la posición
+            Position = Vector2.zero;
         }
     }
-
+    public Vector2 rootStartPosition = new Vector2(2f, 2f);
     private BSTNode root;
-    private GameObject nodePrefab;  // Prefab del nodo
-
-    public BST(GameObject prefab)
-    {
-        nodePrefab = prefab;
-        root = null;
-    }
-    public int Depth()
-    {
-        return GetDepth(root);
-    }
-
-    // Método recursivo para obtener la profundidad de un nodo
 
     public void Insert(int value)
     {
-        root = InsertRec(root, value, Vector2.zero);  // Posición inicial
+        root = InsertRec(root, value, rootStartPosition, 0);
     }
 
-    private BSTNode InsertRec(BSTNode node, int value, Vector2 position)
+    private BSTNode InsertRec(BSTNode node, int value, Vector2 position, int depth)
     {
         if (node == null)
         {
             BSTNode newNode = new BSTNode(value) { Position = position };
-            CreateNodePrefab(newNode);  // Crear el prefab del nodo
+            CreateNodePrefab(newNode);
             return newNode;
         }
 
+        float initialHorizontalSpacing = 0.5f;  // distancia base
+        float offsetX = initialHorizontalSpacing / Mathf.Pow(2, depth);
+        float offsetY = 0.3f;  // vertical fijo 
+
         if (value < node.Value)
-            node.Left = InsertRec(node.Left, value, new Vector2(position.x - 2, position.y - 2));  // Ajustar posiciones
+        {
+            Vector2 leftPos = new Vector2(node.Position.x - offsetX, node.Position.y - offsetY);
+            node.Left = InsertRec(node.Left, value, leftPos, depth + 1);
+            CreateLine(node.Position, leftPos);
+        }
         else if (value > node.Value)
-            node.Right = InsertRec(node.Right, value, new Vector2(position.x + 2, position.y - 2));
+        {
+            Vector2 rightPos = new Vector2(node.Position.x + offsetX, node.Position.y - offsetY);
+            node.Right = InsertRec(node.Right, value, rightPos, depth + 1);
+            CreateLine(node.Position, rightPos);
+        }
+        else
+        {
+            Debug.Log($"Valor {value} ya existe en el árbol.");
+        }
 
         return node;
     }
+    private void CreateLine(Vector2 startPos, Vector2 endPos)
+    {
+        if (linePrefab == null) return;
 
+        GameObject lineObj = Instantiate(linePrefab, Vector3.zero, Quaternion.identity, this.transform);
+        LineRenderer lr = lineObj.GetComponent<LineRenderer>();
+        if (lr != null)
+        {
+            lr.positionCount = 2;
+            lr.SetPosition(0, new Vector3(startPos.x, startPos.y, 0));
+            lr.SetPosition(1, new Vector3(endPos.x, endPos.y, 0));
+        }
+    }
     private void CreateNodePrefab(BSTNode node)
     {
-        // Crear el prefab en la posición correspondiente
-        GameObject newNodeObject = Instantiate(nodePrefab, new Vector3(node.Position.x, node.Position.y, 0), Quaternion.identity);
-        newNodeObject.name = node.Value.ToString();  // Nombre del nodo es el valor
-    }
-    public bool IsPerfect()
-    {
-        // Verifica si el árbol tiene la misma profundidad en todas las hojas y si todos los nodos internos tienen dos hijos
-        int depth = GetDepth(root);
-        return IsPerfectRec(root, 0, depth);
-    }
+        GameObject newNode = Instantiate(nodePrefab, new Vector3(node.Position.x, node.Position.y, 0), Quaternion.identity);
+        newNode.name = node.Value.ToString();
+        newNode.transform.parent = this.transform;
 
-    // Método recursivo que verifica si el árbol es perfecto
-    private bool IsPerfectRec(BSTNode node, int currentDepth, int expectedDepth)
-    {
-        if (node == null)
+        Token tokenComponent = newNode.GetComponent<Token>();
+        if (tokenComponent != null)
         {
-            return true; // Si es null, no hay nada que verificar
+            tokenComponent.Initialize(node.Value);
         }
-
-        // Si es una hoja (nodo sin hijos)
-        if (node.Left == null && node.Right == null)
+        else
         {
-            return currentDepth == expectedDepth;  // Verifica si la hoja está a la profundidad correcta
+            Debug.LogWarning("El prefab no tiene el componente Token.");
         }
-
-        // Si no es hoja, asegurarse de que tenga ambos hijos
-        if (node.Left == null || node.Right == null)
-        {
-            return false; // Si falta uno de los hijos, no es perfecto
-        }
-
-        // Verifica recursivamente en los subárboles izquierdo y derecho
-        return IsPerfectRec(node.Left, currentDepth + 1, expectedDepth) &&
-               IsPerfectRec(node.Right, currentDepth + 1, expectedDepth);
     }
 
-    // Método auxiliar para obtener la profundidad del árbol
-    private int GetDepth(BSTNode node)
-    {
-        int depth = 0;
-        while (node != null)
-        {
-            depth++;
-            node = node.Left; // Bajar hacia el lado izquierdo (todas las hojas deben estar a la misma profundidad)
-        }
-        return depth;
-    }
     public string Traversal()
     {
-        // Recorrido in-order para mostrar los valores de los nodos
-        return InOrder(root, new StringBuilder()).ToString();
+        StringBuilder sb = new StringBuilder();
+        InOrder(root, sb);
+        return sb.ToString();
     }
 
-    private StringBuilder InOrder(BSTNode node, StringBuilder sb)
+    private void InOrder(BSTNode node, StringBuilder sb)
     {
-        if (node == null) return sb;
+        if (node == null) return;
         InOrder(node.Left, sb);
         sb.Append(node.Value + " ");
         InOrder(node.Right, sb);
-        return sb;
     }
 }
+
+
 
 
