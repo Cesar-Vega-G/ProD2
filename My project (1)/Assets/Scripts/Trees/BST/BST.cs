@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Text;
+using System;
 
 public class BST : MonoBehaviour
 {
@@ -88,7 +89,51 @@ public class BST : MonoBehaviour
             Debug.LogWarning("El prefab no tiene el componente Token.");
         }
     }
+    public bool Contains(int value)
+    {
+        return ContainsRec(root, value);
+    }
 
+    private bool ContainsRec(BSTNode node, int value)
+    {
+        if (node == null) return false;
+        if (node.Value == value) return true;
+        if (value < node.Value)
+            return ContainsRec(node.Left, value);
+        else
+            return ContainsRec(node.Right, value);
+    }
+
+    public int Depth()
+    {
+        return GetDepth(root);
+    }
+
+    private int GetDepth(BSTNode node)
+    {
+        if (node == null) return 0;
+        return 1 + Mathf.Max(GetDepth(node.Left), GetDepth(node.Right));
+    }
+    public bool IsBalanced()
+    {
+        return CheckBalance(root) != -1;
+    }
+
+    private int CheckBalance(BSTNode node)
+    {
+        if (node == null) return 0;
+
+        int leftHeight = CheckBalance(node.Left);
+        if (leftHeight == -1) return -1;  // No balanceado en subárbol izquierdo
+
+        int rightHeight = CheckBalance(node.Right);
+        if (rightHeight == -1) return -1; // No balanceado en subárbol derecho
+
+        if (Math.Abs(leftHeight - rightHeight) > 1)
+            return -1;  // Diferencia mayor a 1, no balanceado
+
+        return 1 + Mathf.Max(leftHeight, rightHeight);
+    }
     public string Traversal()
     {
         StringBuilder sb = new StringBuilder();

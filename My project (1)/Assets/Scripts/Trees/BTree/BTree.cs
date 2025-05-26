@@ -135,6 +135,48 @@ public class BTree : MonoBehaviour
             }
         }
     }
+    public int Depth()
+    {
+        return GetDepth(root);
+    }
+
+    private int GetDepth(BTreeNode node)
+    {
+        if (node == null) return 0;
+        if (node.IsLeaf) return 1;
+
+        int maxDepth = 0;
+        foreach (var child in node.Children)
+        {
+            int childDepth = GetDepth(child);
+            if (childDepth > maxDepth)
+                maxDepth = childDepth;
+        }
+        return 1 + maxDepth;
+    }
+
+    public bool IsComplete()
+    {
+        if (root == null) return true;
+        int expectedLevel = Depth();
+        return IsCompleteRec(root, 1, expectedLevel);
+    }
+
+    private bool IsCompleteRec(BTreeNode node, int currentLevel, int expectedLevel)
+    {
+        if (node.IsLeaf)
+            return currentLevel == expectedLevel;
+
+        if (node.Children.Count < (2 * degree))
+            return false;
+
+        foreach (var child in node.Children)
+        {
+            if (!IsCompleteRec(child, currentLevel + 1, expectedLevel))
+                return false;
+        }
+        return true;
+    }
 
     private void UpdateNodeVisual(BTreeNode node)
     {
@@ -217,7 +259,11 @@ public class BTree : MonoBehaviour
             }
         }
     }
-
+    public bool RootHasMinChildren(int minChildren)
+    {
+        if (root == null) return false;
+        return root.Children.Count >= minChildren;
+    }
     public string Traversal()
     {
         return InOrderTraversal(root);

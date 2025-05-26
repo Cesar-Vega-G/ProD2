@@ -7,98 +7,114 @@ public class TreeManager : MonoBehaviour
     [System.Serializable]
     public class PlayerTree
     {
-        public object tree;  // Aquí podemos almacenar directamente los tipos de árboles (AVL, BST, BTree)
+        public object tree;
         public TreeType type;
+        public GameObject treeGameObject; // Guarda referencia para eliminar
     }
 
     public enum TreeType { BST, AVL, BTree }
 
     [SerializeField] private TreeType initialTreeType = TreeType.BST;
-    [SerializeField] private GameObject nodePrefab;  // Prefab para los nodos
+    [SerializeField] private GameObject nodePrefab;
     [SerializeField] private GameObject linePrefab;
     private PlayerTree[] playerTrees;
-    private ChallengeSystem challengeSystem;
 
     private void Awake()
     {
         if (Instance == null)
-        {
             Instance = this;
-        }
         else
-        {
             Destroy(gameObject);
-        }
     }
 
     private void Start()
     {
         InitializeTrees();
-        challengeSystem = FindObjectOfType<ChallengeSystem>();
     }
+
     private void InitializeTrees()
     {
         playerTrees = new PlayerTree[GameManager.Instance.GetPlayersCount()];
 
         for (int i = 0; i < playerTrees.Length; i++)
         {
-            
-            Vector2 startPos = (i == 0) ? new Vector2(2f, 2.7f) : new Vector2(2f, 1f); // jugador 1 a la izquierda, jugador 2 a la derecha
+            Vector2 startPos = (i == 0) ? new Vector2(3f, 2.7f) : new Vector2(3f, 1f);
 
             playerTrees[i] = new PlayerTree
             {
                 type = initialTreeType,
-                tree = CreateTree(initialTreeType, startPos)
+                treeGameObject = CreateTreeObject(initialTreeType, startPos)
             };
+
+            // Extraemos el componente del árbol
+            playerTrees[i].tree = playerTrees[i].treeGameObject.GetComponent(initialTreeType.ToString());
         }
     }
 
-    private object CreateTree(TreeType type, Vector2 rootPos)
+    private GameObject CreateTreeObject(TreeType type, Vector2 rootPos)
     {
+        GameObject go = new GameObject(type.ToString());
+        go.transform.parent = this.transform;
+
         switch (type)
         {
             case TreeType.BST:
                 {
-                    GameObject go = new GameObject("BST");
                     BST bst = go.AddComponent<BST>();
                     bst.nodePrefab = nodePrefab;
                     bst.linePrefab = linePrefab;
                     bst.rootStartPosition = rootPos;
-                    return bst;
+                    break;
                 }
             case TreeType.AVL:
                 {
-                    GameObject go = new GameObject("AVL");
                     AVL avl = go.AddComponent<AVL>();
                     avl.nodePrefab = nodePrefab;
                     avl.linePrefab = linePrefab;
                     avl.rootStartPosition = rootPos;
-                    return avl;
+                    break;
                 }
-            
             case TreeType.BTree:
                 {
-                    GameObject go = new GameObject("BTree");
                     BTree btree = go.AddComponent<BTree>();
                     btree.nodePrefab = nodePrefab;
                     btree.linePrefab = linePrefab;
-                    btree.degree = 2; // min
+                    btree.degree = 2;
                     btree.rootStartPosition = rootPos;
-                    return btree;
+                    break;
                 }
-            
-            default:
-                return null;
         }
+        return go;
     }
 
+    public void ResetTrees()
+    {
+        for (int i = 0; i < playerTrees.Length; i++)
+        {
+            // Destruir GameObject del árbol completo
+            if (playerTrees[i].treeGameObject != null)
+            {
+                Destroy(playerTrees[i].treeGameObject);
+            }
 
+            // Crear uno nuevo igual que al inicio
+            Vector2 startPos = (i == 0) ? new Vector2(2.5f, 2.7f) : new Vector2(2.5f, 1f);
 
+            playerTrees[i].treeGameObject = CreateTreeObject(playerTrees[i].type, startPos);
+            playerTrees[i].tree = playerTrees[i].treeGameObject.GetComponent(playerTrees[i].type.ToString());
+        }
+    }
+    public void SwitchTreeType(int playerId, TreeType newType)
+    {
+        if (playerId < 0 || playerId >= playerTrees.Length) return;
+
+        playerTrees[playerId].type = newType;
+        // No creamos ni destruimos aquí para no perder control, eso lo hace ResetTrees()
+    }
     public void InsertValue(int playerId, int value)
     {
         if (playerId < 0 || playerId >= playerTrees.Length) return;
 
-        // Trabajar con el árbol directamente (en vez de ITree, usar el tipo concreto)
         if (playerTrees[playerId].tree is BST bst)
         {
             bst.Insert(value);
@@ -114,6 +130,7 @@ public class TreeManager : MonoBehaviour
 
         Debug.Log($"Player {playerId + 1} tree: {GetTraversal(playerId)}");
 
+        ChallengeSystem challengeSystem = FindObjectOfType<ChallengeSystem>();
         if (challengeSystem != null)
         {
             bool completed = challengeSystem.CheckChallenge(playerId, playerTrees[playerId].tree);
@@ -121,15 +138,14 @@ public class TreeManager : MonoBehaviour
             {
                 Debug.Log($"🎉 Player {playerId + 1} COMPLETED the challenge: {challengeSystem.GetCurrentChallengeDescription()}");
                 challengeSystem.GenerateRandomChallenge();
-                GameManager.Instance?.AddScore(playerId, 50); // Bonus de ejemplo
+                GameManager.Instance?.AddScore(playerId, 50);
             }
         }
     }
 
     public string GetTraversal(int playerId)
     {
-        if (playerId < 0 || playerId >= playerTrees.Length)
-            return string.Empty;
+        if (playerId < 0 || playerId >= playerTrees.Length) return string.Empty;
 
         var tree = playerTrees[playerId].tree;
         if (tree is BST bst)
@@ -141,38 +157,8 @@ public class TreeManager : MonoBehaviour
 
         return string.Empty;
     }
-
-    public object GetPlayerTree(int playerId)
-    {
-        if (playerId < 0 || playerId >= playerTrees.Length)
-        {
-            Debug.LogWarning("Jugador no encontrado");
-            return null;
-        }
-        return playerTrees[playerId].tree;
-    }
-
-    public void SwitchTreeType(int playerId, TreeType newType)
-    {
-        Vector2 rootPos;
-
-        if (playerId == 0)
-        {
-            rootPos = new Vector2(2f, 2f);      // Posición para playerId 1
-        }
-        else if (playerId == 1)
-        {
-            rootPos = new Vector2(2f, 2f);    // Posición para playerId 2
-        }
-        else
-        {
-            // Posición por defecto para otros IDs, o salir si no quieres crear
-            rootPos = new Vector2(0f, 0f);
-        }
-
-        playerTrees[playerId].tree = CreateTree(newType, rootPos);
-    }
 }
+
 
 
 
