@@ -5,10 +5,10 @@ public class ChallengeSystem : MonoBehaviour
 {
     public enum ChallengeType
     {
-        ReachDepth,
+        ReachDepth,          //BST
         BalanceTree,         // desafío para BST con profundidad >= 2
         CompleteStructure,   // Para BTree
-        InsertValue,         // Para BST
+        InsertValue,         // Para AVL
         BuildBalancedAVL,    // Para AVL (balance y profundidad mínima)
         MinRootChildren      // Árbol B con al menos 3 hijos en la raíz
     }
@@ -108,7 +108,7 @@ public class ChallengeSystem : MonoBehaviour
         {
         
             case ChallengeType.ReachDepth:
-            case ChallengeType.BalanceTree:       // BalanceTree es para BST
+            case ChallengeType.BalanceTree:       // BST
                 return TreeManager.TreeType.BST;
 
             case ChallengeType.InsertValue:
