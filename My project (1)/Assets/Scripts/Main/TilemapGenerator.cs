@@ -20,7 +20,7 @@ public class TilemapPlatformManager : MonoBehaviour
     public int count9x1 = 1;
 
     [Header("Spawn Area")]
-    public Vector2Int spawnAreaMin = new Vector2Int(-20, 1); // 👈 Comenzamos en Y=1 para la primera capa
+    public Vector2Int spawnAreaMin = new Vector2Int(-20, 1); // Comenzamos en Y=1 para la primera capa
     public Vector2Int spawnAreaMax = new Vector2Int(20, 10);
 
     [Header("Layer Settings")]
@@ -39,15 +39,15 @@ public class TilemapPlatformManager : MonoBehaviour
     void GeneratePlatforms()
     {
 
-        // ✅ Plataforma inicial en (-3, 0)
+        // Plataforma inicial en (-3, 0)
         PlacePlatform(mainTile, platform9x1, new Vector2Int(-3, 0));
 
 
-        // Inicializamos la primera capa en Y = spawnAreaMin.y
+        // Inicializar la primera capa en Y = spawnAreaMin.y
         currentLayerY = spawnAreaMin.y;
         platformsInCurrentLayer = 0;
 
-        // Generamos las plataformas en capas
+        // Genera las plataformas en capas
         SpawnPlatforms(platform3x1, count3x1);
         SpawnPlatforms(platform6x1, count6x1);
         SpawnPlatforms(platform9x1, count9x1);
@@ -63,13 +63,12 @@ public class TilemapPlatformManager : MonoBehaviour
             // Contamos plataformas en la capa actual
             platformsInCurrentLayer++;
 
-            // ¿Ya llenamos esta capa?
             if (platformsInCurrentLayer >= platformsPerLayer)
             {
 
-                currentLayerY += 3; // Subimos 3 unidades en Y (a la siguiente capa)
+                currentLayerY += 3; // Sube 3 unidades en Y (a la siguiente capa)
 
-                platformsInCurrentLayer = 0; // Reiniciamos contador para la nueva capa
+                platformsInCurrentLayer = 0; // Reinicio del contador para la nueva capa
             }
         }
     }
@@ -82,7 +81,7 @@ public class TilemapPlatformManager : MonoBehaviour
             // Generamos X aleatorio dentro del rango horizontal
             int xPos = Random.Range(spawnAreaMin.x, spawnAreaMax.x - GetPlatformWidth(platformTemplate) + 1);
 
-            // Y es fijo: siempre en la capa actual
+            // Y es fijo
             int yPos = currentLayerY;
 
             Vector2Int origin = new Vector2Int(xPos, yPos);
@@ -105,7 +104,7 @@ public class TilemapPlatformManager : MonoBehaviour
         {
             Vector2Int tilePos = origin + offset;
 
-            // ✔️ 1️⃣ Revisamos la propia celda
+            // Revisamos la propia celda
             if (occupiedPositions.Contains(tilePos) ||
                 tilePos.x < spawnAreaMin.x || tilePos.x > spawnAreaMax.x ||
                 tilePos.y < spawnAreaMin.y || tilePos.y > spawnAreaMax.y)
@@ -113,7 +112,7 @@ public class TilemapPlatformManager : MonoBehaviour
                 return false;
             }
 
-            // ✔️ 2️⃣ Revisamos celdas adyacentes horizontales, según minHorizontalSpacing
+            // Revisamos celdas adyacentes horizontales, según minHorizontalSpacing
             for (int i = -minHorizontalSpacing; i <= minHorizontalSpacing; i++)
             {
                 if (i == 0) continue; // Saltamos la celda actual

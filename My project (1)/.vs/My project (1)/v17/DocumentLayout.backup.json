@@ -1,42 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\",
+  "WorkspaceRootPath": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Main\\ChallengeSystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Main\\ChallengeSystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|c:\\users\\sarimoca\\documents\\github\\prod2\\my project (1)\\assets\\scripts\\main\\tokenspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\main\\tokenspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Trees\\BST\\BST.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Trees\\BST\\BST.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|c:\\users\\sarimoca\\documents\\github\\prod2\\my project (1)\\assets\\scripts\\main\\tilemapgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\main\\tilemapgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Trees\\BTree\\BTree.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Trees\\BTree\\BTree.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Main\\TreeManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Main\\TreeManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Trees\\AVL\\AVL.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Trees\\AVL\\AVL.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Main\\GameManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Main\\GameManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Main\\UIManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Main\\UIManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Main\\Token.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Main\\Token.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\CambioEscenas\\SceneController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\CambioEscenas\\SceneController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Trees\\AVL\\AVL.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Trees\\AVL\\AVL.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,17 +22,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "AVL.cs",
-              "DocumentMoniker": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Trees\\AVL\\AVL.cs",
+              "DocumentMoniker": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Trees\\AVL\\AVL.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Trees\\AVL\\AVL.cs",
-              "ToolTip": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Trees\\AVL\\AVL.cs",
+              "ToolTip": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Trees\\AVL\\AVL.cs",
               "RelativeToolTip": "Assets\\Scripts\\Trees\\AVL\\AVL.cs",
-              "ViewState": "AgIAAP8AAAAAAAAAAAAkwBsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAANoAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-14T03:54:23.159Z",
               "IsPinned": true,
@@ -64,46 +40,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GameManager.cs",
-              "DocumentMoniker": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Main\\GameManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Main\\GameManager.cs",
-              "ToolTip": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Main\\GameManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Main\\GameManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "TokenSpawner.cs",
+              "DocumentMoniker": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Main\\TokenSpawner.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Main\\TokenSpawner.cs",
+              "ToolTip": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Main\\TokenSpawner.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Main\\TokenSpawner.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T11:12:04.488Z",
+              "WhenOpened": "2025-05-31T19:43:32.805Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Token.cs",
-              "DocumentMoniker": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Main\\Token.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Main\\Token.cs",
-              "ToolTip": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Main\\Token.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Main\\Token.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "TilemapGenerator.cs",
+              "DocumentMoniker": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Main\\TilemapGenerator.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Main\\TilemapGenerator.cs",
+              "ToolTip": "C:\\Users\\Sarimoca\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Main\\TilemapGenerator.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Main\\TilemapGenerator.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAIwGoAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T11:04:16.736Z",
+              "WhenOpened": "2025-05-31T19:38:41.475Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UIManager.cs",
-              "DocumentMoniker": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Main\\UIManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Main\\UIManager.cs",
-              "ToolTip": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Main\\UIManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Main\\UIManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T10:52:38.979Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
               "$type": "Bookmark",
@@ -111,76 +70,7 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:130:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ChallengeSystem.cs",
-              "DocumentMoniker": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Main\\ChallengeSystem.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Main\\ChallengeSystem.cs",
-              "ToolTip": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Main\\ChallengeSystem.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Main\\ChallengeSystem.cs",
-              "ViewState": "AgIAAIoAAAAAAAAAAADwv2IAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T04:58:56.695Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "BTree.cs",
-              "DocumentMoniker": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Trees\\BTree\\BTree.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Trees\\BTree\\BTree.cs",
-              "ToolTip": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Trees\\BTree\\BTree.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Trees\\BTree\\BTree.cs",
-              "ViewState": "AgIAAPsAAAAAAAAAAAAgwAkBAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T04:23:04.208Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "TreeManager.cs",
-              "DocumentMoniker": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Main\\TreeManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Main\\TreeManager.cs",
-              "ToolTip": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Main\\TreeManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Main\\TreeManager.cs",
-              "ViewState": "AgIAAEMAAAAAAAAAAAAAAHAAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T03:53:33.429Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "BST.cs",
-              "DocumentMoniker": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Trees\\BST\\BST.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Trees\\BST\\BST.cs",
-              "ToolTip": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\Trees\\BST\\BST.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Trees\\BST\\BST.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T03:35:19.459Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "SceneController.cs",
-              "DocumentMoniker": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\CambioEscenas\\SceneController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\CambioEscenas\\SceneController.cs",
-              "ToolTip": "C:\\Users\\luisa\\Documents\\GitHub\\ProD2\\My project (1)\\Assets\\Scripts\\CambioEscenas\\SceneController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\CambioEscenas\\SceneController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T09:07:28.071Z",
-              "EditorCaption": ""
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             }
           ]
         }

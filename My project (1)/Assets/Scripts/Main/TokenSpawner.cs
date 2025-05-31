@@ -26,7 +26,6 @@ public class TokenSpawner : MonoBehaviour
         token.Initialize(Random.Range(minValue, maxValue + 1));
     }
 
-    // Debug: Dibuja el área de spawn en el editor
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
