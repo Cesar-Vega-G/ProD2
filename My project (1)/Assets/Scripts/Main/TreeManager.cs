@@ -128,7 +128,7 @@ public class TreeManager : MonoBehaviour
             bTree.Insert(value);
         }
 
-        Debug.Log($"Player {playerId + 1} tree: {GetTraversal(playerId)}");
+        Debug.Log($"Player {playerId + 1} arbol: {GetTraversal(playerId)}");
 
         ChallengeSystem challengeSystem = FindObjectOfType<ChallengeSystem>();
         if (challengeSystem != null)
@@ -136,9 +136,9 @@ public class TreeManager : MonoBehaviour
             bool completed = challengeSystem.CheckChallenge(playerId, playerTrees[playerId].tree);
             if (completed)
             {
-                Debug.Log($"🎉 Player {playerId + 1} COMPLETED the challenge: {challengeSystem.GetCurrentChallengeDescription()}");
+                Debug.Log($"Player {playerId + 1} completó: {challengeSystem.GetCurrentChallengeDescription()}");
                 challengeSystem.GenerateRandomChallenge();
-                GameManager.Instance?.AddScore(playerId, 50);
+
             }
         }
     }

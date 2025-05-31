@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -42,7 +43,7 @@ public class GameManager : MonoBehaviour
         remainingTime = gameDuration;
         isGameActive = true;
         playerScores = new int[playersCount];
-        Debug.Log("Game Started!");
+        Debug.Log("Inicio");
     }
 
     private void Update()
@@ -61,7 +62,7 @@ public class GameManager : MonoBehaviour
         if (playerId >= 0 && playerId < playersCount)
         {
             playerScores[playerId] += points;
-            Debug.Log($"Player {playerId + 1} scored! Total: {playerScores[playerId]}");
+            Debug.Log($"Jugador {playerId + 1} puntos Total: {playerScores[playerId]}");
         }
     }
 
@@ -70,7 +71,6 @@ public class GameManager : MonoBehaviour
         isGameActive = false;
         Debug.Log("Game Over!");
 
-        // Determinar ganador
         int winner = 0;
         for (int i = 1; i < playersCount; i++)
         {
@@ -79,9 +79,16 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.Log($"Player {winner + 1} wins with {playerScores[winner]} points!");
+
+        // Guardar datos del ganador para la siguiente escena
+        GameConstants.WinnerPlayerId = winner;
+        GameConstants.WinnerScore = playerScores[winner];
+
+        // Cambiar a la escena de resultados
+        SceneManager.LoadScene("GameOverScene");
     }
 
-    // Métodos de ayuda
+    // ayuda con datos
     public float GetRemainingTime() => remainingTime;
     public int GetPlayerScore(int playerId) => playerScores[playerId];
 }

@@ -16,23 +16,14 @@ public class Token : MonoBehaviour
         if (valueText != null)
             valueText.text = tokenValueText;
     }
-    // Método modificado
+    // Método cuando es recolectado
     public void Collect(int collectorId)
     {
         if (TreeManager.Instance != null)
         {
             Debug.Log("Collect");
             TreeManager.Instance.InsertValue(collectorId, value);
-            Destroy(gameObject);
-            // ✅ También sumamos puntos al puntaje del jugador
-            if (GameManager.Instance != null)
-            {
-                GameManager.Instance.AddScore(collectorId, value);  // O el valor que decidas
-                
-            }
-
-
-            
+            Destroy(gameObject); 
         }
         
     }

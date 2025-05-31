@@ -68,7 +68,7 @@ public class ChallengeSystem : MonoBehaviour
         switch (currentChallenge.type)
         {
             case ChallengeType.ReachDepth:
-                currentChallenge.targetValue = UnityEngine.Random.Range(2, 4);
+                currentChallenge.targetValue = UnityEngine.Random.Range(3, 5);
                 currentChallenge.description = $"Construye un Árbol de Profundidad: {currentChallenge.targetValue}";
                 break;
 
@@ -78,17 +78,17 @@ public class ChallengeSystem : MonoBehaviour
                 break;
 
             case ChallengeType.BalanceTree:
-                currentChallenge.targetValue = 2; // profundidad mínima 2
+                currentChallenge.targetValue = 3; // profundidad mínima 3
                 currentChallenge.description = $"Mantén un BST balanceado con profundidad mínima {currentChallenge.targetValue}";
                 break;
 
             case ChallengeType.BuildBalancedAVL:
-                currentChallenge.targetValue = UnityEngine.Random.Range(2, 4);
+                currentChallenge.targetValue = UnityEngine.Random.Range(3, 5);
                 currentChallenge.description = $"  Construye un AVL de Profundidad: {currentChallenge.targetValue}";
                 break;
 
             case ChallengeType.CompleteStructure:
-                currentChallenge.targetValue = UnityEngine.Random.Range(2, 4);
+                currentChallenge.targetValue = UnityEngine.Random.Range(3, 5);
                 currentChallenge.description = $"Construye un Árbol B completo de {currentChallenge.targetValue} niveles";
                 break;
 

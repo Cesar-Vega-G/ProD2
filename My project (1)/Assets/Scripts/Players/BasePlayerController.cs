@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections;  // Necesario para usar IEnumerator
+using System.Collections;  
 
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -174,18 +174,6 @@ public abstract class BasePlayerController : MonoBehaviour
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     public void DesactivarMovimientoTemporalmente()
     {
         empujadoTemporalmente = true;
@@ -256,7 +244,7 @@ public abstract class BasePlayerController : MonoBehaviour
 
     protected virtual void Respawn()
     {
-        Debug.Log($"Player {playerId} cayó al vacío. ¡Respawneando!");
+        Debug.Log($"Player {playerId} cayó al vacío");
         transform.position = initialPosition;
         cuerpoJugador.linearVelocity = Vector2.zero;
     }

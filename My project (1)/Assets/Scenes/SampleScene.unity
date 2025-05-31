@@ -240,7 +240,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: 110}
+  m_AnchoredPosition: {x: 50, y: 110}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &64597332
@@ -638,7 +638,7 @@ Transform:
   m_GameObject: {fileID: 522506604}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.3134413, y: 0.03, z: 0}
+  m_LocalPosition: {x: 3.32, y: -0.06, z: 0}
   m_LocalScale: {x: 1.20761, y: 1.20761, z: 1.20761}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -733,7 +733,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: 70}
+  m_AnchoredPosition: {x: 50, y: 70}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &613049783
@@ -1753,13 +1753,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acfc9e72cf3aac546a3ae925271be73a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMovimiento: 5
-  fuerzaSalto: 5
+  velocidadMovimiento: 1
+  fuerzaSalto: 4.5
   distanciaRaycastSuelo: 0.2
   offsetRaycastSuelo: {x: 0, y: -0.1}
   playerId: 0
-  fuerzaGolpe: 10
-  distanciaGolpe: 1.5
+  fuerzaGolpe: 5
+  distanciaGolpe: 1
   capaJugador:
     serializedVersion: 2
     m_Bits: 72
@@ -4760,8 +4760,8 @@ MonoBehaviour:
   distanciaRaycastSuelo: 0.1
   offsetRaycastSuelo: {x: 0, y: -0.01}
   playerId: 1
-  fuerzaGolpe: 1.8
-  distanciaGolpe: 0.2
+  fuerzaGolpe: 5
+  distanciaGolpe: 1
   capaJugador:
     serializedVersion: 2
     m_Bits: 72

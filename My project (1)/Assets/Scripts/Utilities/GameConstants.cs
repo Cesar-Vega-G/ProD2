@@ -13,4 +13,6 @@
 
     // Valores ajustables
     public const int MAX_PLAYERS = 4;
+    public static int WinnerPlayerId = -1;
+    public static int WinnerScore = 0;
 }
