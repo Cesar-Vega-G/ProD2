@@ -30,7 +30,7 @@ public abstract class BasePlayerController : MonoBehaviour
     protected bool empujadoTemporalmente = false;
     protected Vector3 initialPosition;
 
-    // CAMBIO: ahora usan `Key`
+
     protected abstract Key GetLeftKey();
     protected abstract Key GetRightKey();
     protected abstract Key GetJumpKey();
@@ -41,7 +41,7 @@ public abstract class BasePlayerController : MonoBehaviour
     protected abstract System.Type GetOpponentType();
 
     public bool EsInmune { get; set; } = false;
-    protected bool fuerzaGolpeAumentada = false; // Nueva variable para la fuerza aumentada
+    protected bool fuerzaGolpeAumentada = false; 
 
     protected bool saltoEmergenciaDisponible = false;
     protected bool saltoEmergenciaUsado = false;
@@ -58,7 +58,7 @@ public abstract class BasePlayerController : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (transform.position.y < -5f)
+        if (transform.position.y < -15f)
             Respawn();
 
         CheckGrounded();
@@ -70,6 +70,11 @@ public abstract class BasePlayerController : MonoBehaviour
         if (!Grounded && saltoEmergenciaDisponible && !saltoEmergenciaUsado && transform.position.y > 0)
         {
             Debug.Log($"Jugador {playerId} cumple condiciones para salto de emergencia");
+            cuerpoJugador.linearVelocity = new Vector2(cuerpoJugador.linearVelocity.x, 0f);
+            cuerpoJugador.AddForce(Vector2.up * fuerzaSalto * 2f, ForceMode2D.Impulse); // salto alto automático
+            saltoEmergenciaUsado = true;
+            saltoEmergenciaDisponible = false;
+            Debug.Log($"Jugador {playerId} realizó salto automático por poder air jump.");
         }
 
 
@@ -103,14 +108,13 @@ public abstract class BasePlayerController : MonoBehaviour
                 {
                     Jump();
                 }
-                else if (saltoEmergenciaDisponible && !saltoEmergenciaUsado && transform.position.y < 0 && cuerpoJugador.linearVelocity.y < 0)
+                if (saltoEmergenciaDisponible && !saltoEmergenciaUsado && transform.position.y < -1)
                 {
                     cuerpoJugador.linearVelocity = new Vector2(cuerpoJugador.linearVelocity.x, 0f);
-                    cuerpoJugador.AddForce(Vector2.up * fuerzaSalto * 2f, ForceMode2D.Impulse);
-
+                    cuerpoJugador.AddForce(Vector2.up * fuerzaSalto * 2f, ForceMode2D.Impulse); // salto alto automático
                     saltoEmergenciaUsado = true;
-                    saltoEmergenciaDisponible = false; // Desactivar el salto de emergencia después de usarlo
-                    Debug.Log($"Jugador {playerId} usó su salto de emergencia automáticamente.");
+                    saltoEmergenciaDisponible = false;
+                    Debug.Log($"Jugador {playerId} realizó salto automático por poder air jump.");
                 }
 
             }
@@ -247,6 +251,8 @@ public abstract class BasePlayerController : MonoBehaviour
         Debug.Log($"Player {playerId} cayó al vacío");
         transform.position = initialPosition;
         cuerpoJugador.linearVelocity = Vector2.zero;
+        int otroJugadorId = (playerId == 0) ? 1 : 0;
+        GameManager.Instance.AddScore(otroJugadorId, 30);
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7ba4c5f8c032b4444bde8d49c4b888a0
+guid: 2c3f11d0052c1ae49ac4c8fefa4e9ecd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5360871062943272622
-    second: eneminss1_0
+      213: -6532558810226779234
+    second: inmunidad_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,19 +97,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -126,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: eneminss1_0
+      name: inmunidad_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 931
-        height: 615
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: eae876124d3a56a40800000000000000
-      internalID: 5360871062943272622
+      spriteID: e9b95128f50b755a0800000000000000
+      internalID: -6532558810226779234
       vertices: []
       indices: 
       edges: []
@@ -160,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      eneminss1_0: 5360871062943272622
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

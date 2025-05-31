@@ -6,6 +6,11 @@ public class Poderes : MonoBehaviour
 {
     private BasePlayerController jugador;
 
+    [Header("Referencia a la UI del poder")]
+    public PowerVisual powerVisual;  // Asignar en inspector
+
+    private int poderAsignado = -1;  // -1 = ninguno, 0 = inmunidad, 1 = fuerza, 2 = salto
+
     private void Awake()
     {
         jugador = GetComponent<BasePlayerController>();
@@ -15,34 +20,47 @@ public class Poderes : MonoBehaviour
     {
         if (Keyboard.current != null)
         {
-            if (jugador.PlayerId == 1 && Keyboard.current.zKey.wasPressedThisFrame)
+            if (jugador.PlayerId == 0 && Keyboard.current.qKey.wasPressedThisFrame)
             {
-                ActivarInmunidad();
+                ActivarPoder();
             }
-            else if (jugador.PlayerId == 0 && Keyboard.current.vKey.wasPressedThisFrame)
+            else if (jugador.PlayerId == 1 && Keyboard.current.uKey.wasPressedThisFrame)
             {
-                ActivarInmunidad();
+                ActivarPoder();
             }
-            if (jugador.PlayerId == 1 && Keyboard.current.xKey.wasPressedThisFrame)
-            {
-                jugador.ActivarFuerzaGolpeAumentada(3f); // Activar la fuerza por 3 segundos
-            }
-            else if (jugador.PlayerId == 0 && Keyboard.current.bKey.wasPressedThisFrame)
-            {
-                jugador.ActivarFuerzaGolpeAumentada(3f); // Activar la fuerza por 3 segundos
-            }
-
-            if (jugador.PlayerId == 1 && Keyboard.current.cKey.wasPressedThisFrame)
-            {
-                jugador.ActivarSaltoEmergencia();
-            }
-            else if (jugador.PlayerId == 0 && Keyboard.current.nKey.wasPressedThisFrame)
-            {
-                jugador.ActivarSaltoEmergencia();
-            }
-
-
         }
+    }
+
+    public void SetPoderAsignado(int poder)
+    {
+        poderAsignado = poder;
+        Debug.Log($"SetPoderAsignado llamado con: {poder}");
+        if (powerVisual != null)
+            powerVisual.ShowPower(poderAsignado);
+    }
+
+    public void ActivarPoder()
+    {
+        switch (poderAsignado)
+        {
+            case 0:
+                ActivarInmunidad();
+                break;
+            case 1:
+                ActivarFuerzaGolpeAumentada(10f);
+                break;
+            case 2:
+                ActivarSaltoEmergencia();
+                break;
+            default:
+                Debug.Log("No hay poder asignado para activar.");
+                break;
+        }
+
+        poderAsignado = -1;
+
+        if (powerVisual != null)
+            powerVisual.gameObject.SetActive(false); // Ocultar icono cuando se usa el poder
     }
 
     public void ActivarInmunidad()
@@ -51,7 +69,7 @@ public class Poderes : MonoBehaviour
         {
             jugador.EsInmune = true;
             Debug.Log($"Jugador {jugador.PlayerId} ahora es INMUNE por 3 segundos.");
-            jugador.StartCoroutine(DesactivarInmunidadDespuesDeTiempo(3f));
+            jugador.StartCoroutine(DesactivarInmunidadDespuesDeTiempo(10f));
         }
     }
 
@@ -62,9 +80,18 @@ public class Poderes : MonoBehaviour
         Debug.Log($"Jugador {jugador.PlayerId} ya no es inmune.");
     }
 
+    public void ActivarFuerzaGolpeAumentada(float duracion)
+    {
+        if (jugador != null)
+            jugador.ActivarFuerzaGolpeAumentada(duracion);
+    }
 
-
-
-   
+    public void ActivarSaltoEmergencia()
+    {
+        if (jugador != null)
+            jugador.ActivarSaltoEmergencia();
+    }
 }
+
+
 

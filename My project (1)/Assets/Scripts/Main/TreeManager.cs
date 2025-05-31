@@ -46,7 +46,6 @@ public class TreeManager : MonoBehaviour
                 treeGameObject = CreateTreeObject(initialTreeType, startPos)
             };
 
-            // Extraemos el componente del árbol
             playerTrees[i].tree = playerTrees[i].treeGameObject.GetComponent(initialTreeType.ToString());
         }
     }
@@ -91,42 +90,35 @@ public class TreeManager : MonoBehaviour
     {
         for (int i = 0; i < playerTrees.Length; i++)
         {
-            // Destruir GameObject del árbol completo
             if (playerTrees[i].treeGameObject != null)
             {
                 Destroy(playerTrees[i].treeGameObject);
             }
 
-            // Crear uno nuevo igual que al inicio
             Vector2 startPos = (i == 0) ? new Vector2(2.5f, 2.7f) : new Vector2(2.5f, 1f);
 
             playerTrees[i].treeGameObject = CreateTreeObject(playerTrees[i].type, startPos);
             playerTrees[i].tree = playerTrees[i].treeGameObject.GetComponent(playerTrees[i].type.ToString());
         }
     }
+
     public void SwitchTreeType(int playerId, TreeType newType)
     {
         if (playerId < 0 || playerId >= playerTrees.Length) return;
 
         playerTrees[playerId].type = newType;
-        // No creamos ni destruimos aquí para no perder control, eso lo hace ResetTrees()
     }
+
     public void InsertValue(int playerId, int value)
     {
         if (playerId < 0 || playerId >= playerTrees.Length) return;
 
         if (playerTrees[playerId].tree is BST bst)
-        {
             bst.Insert(value);
-        }
         else if (playerTrees[playerId].tree is AVL avl)
-        {
             avl.Insert(value);
-        }
         else if (playerTrees[playerId].tree is BTree bTree)
-        {
             bTree.Insert(value);
-        }
 
         Debug.Log($"Player {playerId + 1} arbol: {GetTraversal(playerId)}");
 
@@ -138,7 +130,18 @@ public class TreeManager : MonoBehaviour
             {
                 Debug.Log($"Player {playerId + 1} completó: {challengeSystem.GetCurrentChallengeDescription()}");
                 challengeSystem.GenerateRandomChallenge();
-
+                GameManager.Instance.AddScore(playerId, 50);
+                GameObject playerObject = GameObject.FindWithTag($"Player {playerId + 1}");
+                if (playerObject != null)
+                {
+                    Poderes poderes = playerObject.GetComponent<Poderes>();
+                    if (poderes != null)
+                    {
+                        int poderAleatorio = UnityEngine.Random.Range(0, 3);
+                        poderes.SetPoderAsignado(poderAleatorio);
+                        Debug.Log($"Poder {poderAleatorio} asignado a jugador {playerId + 1}");
+                    }
+                }
             }
         }
     }
@@ -158,6 +161,8 @@ public class TreeManager : MonoBehaviour
         return string.Empty;
     }
 }
+
+
 
 
 

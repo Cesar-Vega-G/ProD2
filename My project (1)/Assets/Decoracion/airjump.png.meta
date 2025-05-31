@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4190c0cd0d87f4f49a73db8797a06e7d
+guid: 6e6a048454db5f343aa642d01e79c007
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8955033331715007332
-    second: level_jungle_tiles_02_preview_0
+      213: -6370641032004415265
+    second: airjump_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,19 +97,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -126,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: level_jungle_tiles_02_preview_0
+      name: airjump_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1152
-        height: 648
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 463e7a09e5ba64c70800000000000000
-      internalID: 8955033331715007332
+      spriteID: fd059d70cbfe697a0800000000000000
+      internalID: -6370641032004415265
       vertices: []
       indices: 
       edges: []
@@ -160,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      level_jungle_tiles_02_preview_0: 8955033331715007332
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -6,7 +6,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI gameTimeText;
     public TextMeshProUGUI challengeTimeText;
     public TextMeshProUGUI challengeDescriptionText;
-
+    public TextMeshProUGUI player1ScoreText;
+    public TextMeshProUGUI player2ScoreText;
     private GameManager gameManager;
     private ChallengeSystem challengeSystem;
 
@@ -27,6 +28,12 @@ public class UIManager : MonoBehaviour
         {
             float remainingGameTime = gameManager.GetRemainingTime();
             gameTimeText.text = $"Tiempo Restante: {FormatTime(remainingGameTime)}";
+
+            int p1Score = gameManager.GetPlayerScore(0);
+            int p2Score = gameManager.GetPlayerScore(1);
+
+            player1ScoreText.text = $"Jugador 1: {p1Score} pts";
+            player2ScoreText.text = $"Jugador 2: {p2Score} pts";
         }
 
         if (challengeSystem != null)
